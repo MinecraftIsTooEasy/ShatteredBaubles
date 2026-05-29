@@ -1,2 +1,2 @@
 ### ShatteredBauble
-adds a lot of new balanced baubles
+adds a lot of new baubles
