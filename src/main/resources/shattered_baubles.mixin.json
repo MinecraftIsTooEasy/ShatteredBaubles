@@ -1,0 +1,17 @@
+{
+  "compatibilityLevel": "JAVA_17",
+  "package": "vbonedra.shattered_baubles.mixin",
+  "required": true,
+  "target": "DEFAULT",
+  "minVersion": "0.8.3",
+  "mixins": [
+    "BlockMixin",
+    "EntityChickenMixin",
+    "EntityGhoulMixin",
+    "EntityLivingBaseMixin",
+    "EntityPlayerMixin",
+    "FoodStatsMixin",
+    "ItemFoodMixin",
+    "RingOfPride.PlayerNBT"
+  ]
+}

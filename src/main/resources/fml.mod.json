@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "shattered_baubles",
+  "version": "${version}",
+  "depends": {
+    "fishmodloader": ">=3.3.0",
+    "baubles": ">=1.1.2"
+  },
+  "environment": "*",
+  "name": "ShatteredBaubles",
+  "description": "Add a series of uncanny baubles.",
+  "authors": [
+    "vbonedra"
+  ],
+  "entrypoints": {
+    "preLaunch": [
+      "vbonedra.shattered_baubles.ShatteredBaubles"
+    ],
+    "main": [
+      "vbonedra.shattered_baubles.ShatteredBaubles"
+    ],
+    "emi": [
+      "vbonedra.shattered_baubles.emi.SBEmiPlugin"
+    ]
+  },
+  "mixins": [
+    "shattered_baubles.mixin.json"
+  ],
+  "accessWidener": "shattered_baubles.accesswidener",
+  "custom": {
+    "loom:injected_interfaces": {
+    }
+  }
+}

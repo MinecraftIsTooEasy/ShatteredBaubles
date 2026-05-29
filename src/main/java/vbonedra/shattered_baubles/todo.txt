@@ -1,0 +1,68 @@
+3. Shattered Baubles
+= WHY: lack of balanced baubles
+# Items
+$ rusted_shackles
+    - Slot: BRACELET
+    - Item name:
+        - en_US: Rusted Shackles
+        - ru_RU: Ржавые кандалы
+    - Description:
+        - en_US: Good for subduing violent criminals. Rusted iron increases damage by 50%, but a third of attacks miss. They dig into your wrists with sudden movements.
+        - ru_RU: Хороши для усмирения буйных преступников. Ржавое железо увеличивает урон на 50%, но треть атак не достигает цели. Впиваются в ваши запястья при резких движениях.
+    - Source:
+        - loot: fortress
+        - loot: stronghold
+        - loot: village
+        - loot: desert pyramid
+        - loot: jungle temple
+$ flower_boots
+    - Slot: FEET
+    - Item name:
+        - en_US: Flower Boots
+        - ru_RU: Цветочные ботинки
+    - Description:
+        - en_US: Stems twine around your feet, and flower buds open as you approach grass. They accelerate your movement through the grass and allow you to climb through vegetation.
+        - ru_RU: Стебли вьются вокруг ваших ног, а бутоны цветов раскрываются при приближении к траве. Ускоряют движение по траве и позволяют карабкаться по растительности.
+    - Source:
+        - loot: jungle temple
+        - loot: witch hut
+$ dried_tentacles
+    - Slot: BELT
+    - Item name:
+        - en_US: Dried Tentacles
+        - ru_RU: Сушёные щупальца
+    - Description:
+        - en_US: Tangled, dry tentacles. Upon contact with water, they come to life and begin to protect their host. Taking damage slows the attacker.
+        - ru_RU: Плетёные сушеные щупальца. При контакте с водой оживают и начинают защищать носителя. Получении урона замедляет атакующего.
+    - Source:
+        - loot: witch hut
+$ crown_of_thorns
+    - Slot: HEAD
+    - Item name:
+        - en_US: Crown of Thorns
+        - ru_RU: Терновый венец
+    - Description:
+        - en_US: The thorns reach for bones, tearing through metal and skin. They prolong life, taking away the right to a painless death.
+        - ru_RU: Шипы тянутся к костям, разрывая металл и кожу. Они растягивают жизнь, забирая право на безболезненную смерть.
+    - Source:
+        - loot: fortress
+        - craft:
+                = 'EWD'
+                = 'W W'
+                = 'DWE'
+            - W: Witherwood Bush
+            - E: Bottle o' Experience
+            - D: Bottle o' Disenchanting
+$ heavy_corset
+    - Slot: BACK
+    - Item name:
+        - en_US: Heavy Corset
+        - ru_RU: Тяжёлый корсет
+    - Description:
+        - en_US: A pile of metal holding you in a fighting stance. You're ready to take the hardest hits, but you can forget about running and squatting.
+        - ru_RU: Груда металла, удерживающая в боевой стойке. Вы готовы принять самые сильные удары, только о беге и приседании можете позабыть.
+    - Source:
+        - loot: underworld dungeon
+        - loot: overworld dungeon
+        - loot: village
+        - loot: witch hut
