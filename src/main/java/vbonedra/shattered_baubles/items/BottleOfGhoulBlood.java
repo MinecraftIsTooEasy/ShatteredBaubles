@@ -6,8 +6,9 @@ import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.util.MathAdditional;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
 
 public class BottleOfGhoulBlood extends SBItem {
     public BottleOfGhoulBlood(int id) {
@@ -25,18 +26,17 @@ public class BottleOfGhoulBlood extends SBItem {
         return BaubleType.AMULET;
     }
 
+
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "mob.chicken.plop", 0.25f, 1.75F);
-            player.worldObj.playSoundAtEntity(player, "random.drink", 0.25f, 1.5f);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, "mob.chicken.plop", 0.5, 1.0);
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, "random.drink", 0.25, 0.75);
     }
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "mob.chicken.plop", 0.25f, 1.25F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, "mob.chicken.plop", 0.5, 0.75);
     }
 
     public float getHealthLimitAdditional(float original, EntityPlayer player) {

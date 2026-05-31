@@ -10,7 +10,10 @@ import net.minecraft.Material;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.util.MathAdditional;
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
+
+import static vbonedra.shattered_baubles.event.SBSounds.*;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
 
 
 public class AncientGauntlet extends SBItem {
@@ -33,15 +36,15 @@ public class AncientGauntlet extends SBItem {
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "random.anvil_land", 0.125F, 1.5F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 1.0);
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_CHAIN, 0.5, 1.0);
     }
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "random.anvil_land", 0.125F, 1.25F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 0.75);
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_CHAIN, 0.5, 0.75);
     }
 
 

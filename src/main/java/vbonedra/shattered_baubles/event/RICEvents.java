@@ -5,6 +5,6 @@ import moddedmite.rustedironcore.api.event.Handlers;
 public class RICEvents extends Handlers {
 
     public static void register() {
-        Handlers.LootTable.register(new SBLootTableRegisterListener());
+        Handlers.LootTable.register(new SBLootTable());
     }
 }

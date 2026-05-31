@@ -14,4 +14,9 @@ public class FMLEvents {
     public void onRecipeRegister(RecipeRegistryEvent event) {
         SBItems.registerRecipes(event);
     }
+
+    @Subscribe
+    public void onSoundsRegister(SoundsRegisterEvent event) {
+        SBSounds.register(event);
+    }
 }

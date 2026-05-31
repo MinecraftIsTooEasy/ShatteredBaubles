@@ -5,10 +5,13 @@ import baubles.api.BaubleType;
 import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import java.util.Set;
 
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundAtPlayer;
 
 public class ClimbingPick extends SBItem {
     public ClimbingPick(int id) {
@@ -27,15 +30,13 @@ public class ClimbingPick extends SBItem {
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "dig.stone", 0.5F, 1.25F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 1.0);
     }
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "dig.stone", 0.5F, 0.75F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 0.75);
     }
 
 
@@ -64,20 +65,43 @@ public class ClimbingPick extends SBItem {
         if (!BaubleSlotHelper.hasBeltOfType(player, SBItems.climbing_pick)) return false;
         if (climbableMaterials.contains(material)) {
             float climbingSpeed = (float) (player.getClimbingSpeed() * climbing_pick_CLIMBING_SPEED_MULTIPLIER.getDoubleValue());
-            player.fallDistance = 0.0F;
 
-            if (player.onGround || player.jumpMovementFactor > 0.02) return true;
-            if (player.isSneaking() || player.onGround) {
-                player.motionY = 0.0D;
+            if (player.isSneaking() && !player.onGround) {
+                if (player.motionY >= -climbingSpeed*10) {
+                    player.fallDistance = 0.0F;
+                    if (player.rotationPitch < -45.0F) {
+                        player.motionY = climbingSpeed;
+                        // turns player into client player, which means no sound, fix needed maybe
+//                        if (player.moveForward == 0 && player.moveStrafing == 0) {
+//                            player.motionY = 0;
+//                            playSound = false;
+//                        }
+                    } else if (player.rotationPitch > 45.0F) {
+                        player.motionY = -climbingSpeed;
+                    } else {
+                        player.motionY = 0;
+                    }
+                    if (player.motionY != 0 && player.ticksExisted % 10 == 0) {
+                        playRandomizedSoundAtPlayer(
+                                player,
+                                "dig.stone",
+                                0.75, 0.1,
+                                0.75, 0.1
+                        );
+                    }
+                } else {
+                    player.fallDistance *= 0.9F;
+                    player.motionY *= 0.9;
+                    playRandomizedSoundAtPlayer(
+                            player,
+                            "dig.stone",
+                            0.75, 0.1,
+                            0.75, 0.1
+                    );
+                }
             }
-            else if (player.moveForward != 0 || player.moveStrafing != 0) {
-                player.motionY = climbingSpeed;
-            }
-            else {
-                player.motionY = -climbingSpeed;
-            }
+
             return true;
-
         }
         return false;
     }

@@ -9,8 +9,10 @@ import net.minecraft.Material;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.util.IPlayerNBT;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
 
 public class RingOfPride extends SBItem {
     public RingOfPride(int id) {
@@ -28,30 +30,29 @@ public class RingOfPride extends SBItem {
         return BaubleType.RING;
     }
 
+
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (player == null) return;
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "random.orb", 0.5F, 1.5F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 1.0);
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, "random.orb", 0.25, 0.1);
     }
-
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (player == null) return;
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "random.orb", 0.5F, 0.5F);
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 0.75);
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, "random.orb", 0.25, 0.25);
 
-            if (player instanceof EntityPlayer) {
-                IPlayerNBT pridePlayer = (IPlayerNBT) player;
-                int sharedExp = pridePlayer.shatteredBaubles$getRingOfPrideSharedExperience();
-                pridePlayer.shatteredBaubles$setRingOfPrideSharedExperience(0);
-                if (sharedExp >= 0) {
-                    ((EntityPlayer) player).addExperience(-sharedExp);
-                }
+        if (player instanceof EntityPlayer) {
+            IPlayerNBT pridePlayer = (IPlayerNBT) player;
+            int sharedExp = pridePlayer.shatteredBaubles$getRingOfPrideSharedExperience();
+            pridePlayer.shatteredBaubles$setRingOfPrideSharedExperience(0);
+            if (sharedExp >= 0) {
+                ((EntityPlayer) player).addExperience(-sharedExp);
             }
         }
     }
+
 
     public int getAdditionalExperience(int xp, EntityPlayer player) {
         xp = (int) (xp * ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue() * BaubleSlotHelper.countRingsOfType(player, SBItems.ring_of_pride));

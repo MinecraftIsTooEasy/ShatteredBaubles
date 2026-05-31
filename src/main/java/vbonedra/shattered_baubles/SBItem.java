@@ -8,6 +8,7 @@ import baubles.creativetab.BaublesCreativeTab;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import net.minecraft.*;
 import shims.java.net.minecraft.text.Text;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 import static vbonedra.shattered_baubles.ShatteredBaubles.LOGGER;
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.PROBABILITY_ChestName;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
+import static vbonedra.shattered_baubles.util.SBConfig.PROBABILITY_ChestName;
 
 public abstract class SBItem extends Item implements IBauble {
     public SBItem(int id, Material material, String texture) {
@@ -118,7 +121,7 @@ public abstract class SBItem extends Item implements IBauble {
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
         if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "random.orb", 0.1F, 1.3f);
+//            SBSoundMaster.playSoundEquipUnequip(player, EQUIP_GENERIC, 0.5, 1.0);
         }
     }
 

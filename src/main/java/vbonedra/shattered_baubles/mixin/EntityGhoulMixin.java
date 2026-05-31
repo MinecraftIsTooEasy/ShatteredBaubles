@@ -5,12 +5,12 @@ import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.ConfigShatteredBaubles;
+import vbonedra.shattered_baubles.util.SBConfig;
 
 
 @Mixin(EntityGhoul.class)
 public class EntityGhoulMixin extends EntityMob {
-    @Unique private static final float BOTTLE_OF_GHOUL_BLOOD_DROP_CHANCE = (float) ConfigShatteredBaubles.bottle_of_ghoul_blood_PROBABILITY_Ghoul.getDoubleValue();
+    @Unique private static final float BOTTLE_OF_GHOUL_BLOOD_DROP_CHANCE = (float) SBConfig.bottle_of_ghoul_blood_PROBABILITY_Ghoul.getDoubleValue();
 
     public EntityGhoulMixin(World par1World) {
         super(par1World);

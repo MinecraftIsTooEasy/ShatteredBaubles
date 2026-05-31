@@ -5,10 +5,12 @@ import baubles.api.BaubleType;
 import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import java.util.Set;
 
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
 
 public class FlowerBoots extends SBItem {
     public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
@@ -23,17 +25,16 @@ public class FlowerBoots extends SBItem {
         return BaubleType.FEET;
     }
 
+
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "step.grass", 1F, 1.25F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_GENERIC, 0.5, 1.0);
     }
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "step.grass", 1F, 0.75F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_GENERIC, 0.5, 0.75);
     }
 
 

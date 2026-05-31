@@ -30,7 +30,7 @@ public class SBItems {
 
 
     private static void registerItem(ItemRegistryEvent registry, String name, Item item) {
-        registry.register(ShatteredBaubles.MODID, ShatteredBaubles.NAMESPACE + ':' + name, name, item);
+        registry.register(ShatteredBaubles.MOD_ID, ShatteredBaubles.RESOURCE_ID + name, name, item);
     }
 
     public static void registerItems(ItemRegistryEvent event) {

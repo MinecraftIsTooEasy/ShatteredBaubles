@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vbonedra.shattered_baubles.items.BottleOfGhoulBlood;
 import vbonedra.shattered_baubles.items.SaltCube;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.ConfigShatteredBaubles;
+import vbonedra.shattered_baubles.util.SBConfig;
 
 @Mixin(FoodStats.class)
 public abstract class FoodStatsMixin {
@@ -47,7 +47,7 @@ public abstract class FoodStatsMixin {
         if (!this.player.capabilities.isCreativeMode && !this.player.capabilities.disableDamage && !this.player.isGhost() && !this.player.isZevimrgvInTournament()) {
             hunger *= this.global_hunger_rate;
             if (BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube)) {
-                hunger *= (float) ConfigShatteredBaubles.salt_cube_METABOLISM_MULTIPLIER.getDoubleValue();
+                hunger *= (float) SBConfig.salt_cube_METABOLISM_MULTIPLIER.getDoubleValue();
             }
             this.hunger = Math.min(this.hunger + hunger, 40.0F);
             if (this.player.worldObj.isRemote && this.hunger > 0.2F) {

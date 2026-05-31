@@ -9,8 +9,10 @@ import net.minecraft.Material;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.util.MathAdditional;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
 
-import static vbonedra.shattered_baubles.util.ConfigShatteredBaubles.*;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
 
 public class LeatherGlove extends SBItem {
 
@@ -33,15 +35,13 @@ public class LeatherGlove extends SBItem {
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "step.cloth", 0.75F, 1.75F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 1.0);
     }
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (!player.worldObj.isRemote) {
-            player.worldObj.playSoundAtEntity(player, "step.cloth", 0.75F, 1.25F);
-        }
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 0.75);
     }
 
     public float getDamageAdditional(float original, EntityPlayer player) {
