@@ -11,6 +11,7 @@ import java.util.Set;
 
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
 import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundAtPlayer;
 
 public class FlowerBoots extends SBItem {
     public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
@@ -43,10 +44,9 @@ public class FlowerBoots extends SBItem {
             Material.grass,
             Material.pumpkin,
             Material.cactus,
-
             Material.tree_leaves
     );
-    public float getFireDamageMultiplier(EntityPlayer player, float damage) {
+    public float getFireDamageAdditionalPercent(EntityPlayer player, float damage) {
         return damage * (float) (BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots) ? (flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()) : 0);
     }
     public float getMovementSpeedMultiplier(EntityPlayer player, float speed) {
@@ -65,20 +65,27 @@ public class FlowerBoots extends SBItem {
         if (!BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots)) return false;
         if (plantMaterials.contains(material)) {
             float climbingSpeed = (float) (player.getClimbingSpeed() * flower_boots_CLIMBING_SPEED_MULTIPLIER.getDoubleValue());
-            player.fallDistance = 0.0F;
 
-            if (player.onGround || player.jumpMovementFactor > 0.02) return true;
-            if (player.isSneaking() || player.onGround) {
-                player.motionY = 0.0D;
+            if (!player.onGround) {
+                player.fallDistance = 0.0F;
+                if (player.rotationPitch < -45.0F) {
+                    player.motionY = climbingSpeed;
+                } else if (player.rotationPitch > 45.0F) {
+                    player.motionY = -climbingSpeed;
+                } else {
+                    player.motionY = 0;
+                }
+                if (player.motionY != 0 && player.ticksExisted % 10 == 0) {
+                    playRandomizedSoundAtPlayer(
+                            player,
+                            "dig.leave",
+                            0.75, 0.1,
+                            0.75, 0.1
+                    );
+                }
             }
-            else if (player.moveForward != 0 || player.moveStrafing != 0) {
-                player.motionY = climbingSpeed;
-            }
-            else {
-                player.motionY = -climbingSpeed;
-            }
+
             return true;
-
         }
         return false;
     }

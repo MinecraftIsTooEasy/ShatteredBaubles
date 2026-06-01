@@ -2,10 +2,7 @@ package vbonedra.shattered_baubles.items;
 
 import baubles.api.BaubleSlotHelper;
 import baubles.api.BaubleType;
-import net.minecraft.EntityLivingBase;
-import net.minecraft.EntityPlayer;
-import net.minecraft.ItemStack;
-import net.minecraft.Material;
+import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
@@ -43,8 +40,12 @@ public class SaltCube extends SBItem {
     }
 
 
-    public float getRegenerationAdditional(float baseIncrement, EntityPlayer player) {
-        return baseIncrement * (float) (salt_cube_METABOLISM_MULTIPLIER.getDoubleValue()
+    public float getMetabolismMultiplier(EntityPlayer player) {
+        return (float) (salt_cube_METABOLISM_MULTIPLIER.getDoubleValue()
                 * (BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube) ? 1 : 0));
     }
+    public float getRegenerationAdditional(float baseIncrement, EntityPlayer player) {
+        return baseIncrement * getMetabolismMultiplier(player);
+    }
+
 }

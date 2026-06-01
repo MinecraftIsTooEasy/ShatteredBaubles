@@ -57,7 +57,7 @@ public class SBEmiPlugin implements EmiPlugin {
         registry.addRecipe(new EmiInfoRecipe(
             stacks,
             text,
-                new ResourceLocation(ShatteredBaubles.NAMESPACE, "info/%s".formatted(name))
+                new ResourceLocation(ShatteredBaubles.MOD_ID, "info/%s".formatted(name))
         ));
     }
 

@@ -6,9 +6,11 @@
   "minVersion": "0.8.3",
   "mixins": [
     "BlockMixin",
+    "EnchantmentHelperMixin",
     "EntityChickenMixin",
     "EntityGhoulMixin",
     "EntityLivingBaseMixin",
+    "EntityMixin",
     "EntityPlayerMixin",
     "FoodStatsMixin",
     "ItemFoodMixin",

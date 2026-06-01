@@ -44,16 +44,20 @@ public abstract class EntityPlayerMixin {
     // DamageScale
     @Inject(method = "attackEntityFrom(Lnet/minecraft/Damage;)Lnet/minecraft/EntityDamageResult;", at = @At("HEAD"))
     private void injectDamageScale(Damage damage, CallbackInfoReturnable<EntityDamageResult> cir) {
-        if ((Object) this instanceof EntityPlayer && damage != null && damage.getAmount() > 0.0F) {
+        if (
+                        damage != null &&
+                        damage.getAmount() > 0.0F
+        ) {
             EntityPlayer player = (EntityPlayer) (Object) this;
             float scale = 1.0F;
-            if (damage.getSource() == DamageSource.onFire || damage.getSource() == DamageSource.inFire) {
-                scale += ((FlowerBoots) SBItems.flower_boots).getFireDamageMultiplier(player, scale);
+            if (damage.getSource() == DamageSource.onFire || damage.getSource() == DamageSource.inFire || damage.getSource() == DamageSource.lava) {
+                scale += ((FlowerBoots) SBItems.flower_boots).getFireDamageAdditionalPercent(player, scale);
             }
             if (damage.getSource() == DamageSource.fall) {
-                scale += ((ClimbingPick) SBItems.climbing_pick).getFallDamageMultiplier(player, scale);
+                scale += ((ClimbingPick) SBItems.climbing_pick).getFallDamageAdditionalPercent(player, scale);
+                scale += ((FeatherBoots) SBItems.feather_boots).getFallDamageAdditionalPercent(player, scale);
             }
-            if (scale != 1.0F) {
+            if (scale != 1.0F && scale >= 0) {
                 damage.scaleAmount(scale);
             }
         }
@@ -62,6 +66,8 @@ public abstract class EntityPlayerMixin {
     @ModifyReturnValue(method = "getAIMoveSpeed()F", at = @At("RETURN"))
     private float injectMovementSpeed(float original) {
         return original
-                + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedMultiplier((EntityPlayer) (Object) this, original);
+                + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedMultiplier((EntityPlayer) (Object) this, original)
+                ;
     }
+
 }

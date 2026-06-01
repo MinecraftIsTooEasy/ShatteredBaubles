@@ -16,7 +16,7 @@ public class BottleOfGhoulBlood extends SBItem {
     }
     public String formatTextWithConfigValues(String text) {
         return text.formatted(
-                Math.round(bottle_of_ghoul_blood_REGENERATION_MULTIPLIER.getDoubleValue()*100),
+                Math.round(bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round(bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue()*100)
         );
     }
@@ -44,7 +44,7 @@ public class BottleOfGhoulBlood extends SBItem {
                 * (BaubleSlotHelper.hasAmuletOfType(player, SBItems.bottle_of_ghoul_blood) ? 1 : 0);
     }
     public float getRegenerationAdditional(float baseIncrement, EntityPlayer player) {
-        return baseIncrement * (float) (bottle_of_ghoul_blood_REGENERATION_MULTIPLIER.getDoubleValue()
+        return baseIncrement * (float) (bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT.getDoubleValue()
                 * (BaubleSlotHelper.hasAmuletOfType(player, SBItems.bottle_of_ghoul_blood) ? 1 : 0));
     }
 }

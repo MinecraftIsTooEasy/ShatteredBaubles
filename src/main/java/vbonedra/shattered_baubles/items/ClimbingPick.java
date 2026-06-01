@@ -5,7 +5,6 @@ import baubles.api.BaubleType;
 import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import java.util.Set;
 
@@ -41,7 +40,7 @@ public class ClimbingPick extends SBItem {
 
 
 
-    public float getFallDamageMultiplier(EntityPlayer player, float damage) {
+    public float getFallDamageAdditionalPercent(EntityPlayer player, float damage) {
         return damage * (float) (BaubleSlotHelper.hasBeltOfType(player, SBItems.climbing_pick) ? climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue() : 0);
     }
     private static final Set<Material> climbableMaterials = Set.of(
@@ -58,7 +57,6 @@ public class ClimbingPick extends SBItem {
             Material.obsidian,
             Material.glowstone,
             Material.netherrack,
-
             Material.stone
     );
     public boolean climbWall(EntityPlayer player, Material material){
@@ -71,37 +69,29 @@ public class ClimbingPick extends SBItem {
                     player.fallDistance = 0.0F;
                     if (player.rotationPitch < -45.0F) {
                         player.motionY = climbingSpeed;
-                        // turns player into client player, which means no sound, fix needed maybe
-//                        if (player.moveForward == 0 && player.moveStrafing == 0) {
-//                            player.motionY = 0;
-//                            playSound = false;
-//                        }
                     } else if (player.rotationPitch > 45.0F) {
                         player.motionY = -climbingSpeed;
                     } else {
                         player.motionY = 0;
                     }
-                    if (player.motionY != 0 && player.ticksExisted % 10 == 0) {
-                        playRandomizedSoundAtPlayer(
-                                player,
-                                "dig.stone",
-                                0.75, 0.1,
-                                0.75, 0.1
-                        );
+                    if (player.ticksExisted % 10 == 0 &&
+                            (
+                                    player.motionY != 0 ||
+                                    player.moveForward != 0 ||
+                                    player.moveStrafing != 0
+                            )
+                    ) {
+                        System.out.println("sound");
+                        return true;
                     }
                 } else {
                     player.fallDistance *= 0.9F;
                     player.motionY *= 0.9;
-                    playRandomizedSoundAtPlayer(
-                            player,
-                            "dig.stone",
-                            0.75, 0.1,
-                            0.75, 0.1
-                    );
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
         return false;
     }

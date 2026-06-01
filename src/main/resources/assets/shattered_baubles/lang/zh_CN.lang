@@ -52,4 +52,12 @@ item.heavy_corset.description=Pile of metal holding you in a fighting stance. Yo
 emi.heavy_corset.description=Pile of metal holding you in a fighting stance. You're ready to take the hardest hits, but you can forget about running and crouching.
 item.withered_witch_head.name=Withered Witch Head
 item.withered_witch_head.description=You barely hear weird sounds. It laughed and suddenly you felt sick. It whispered and suddenly you felt better. Who know's what inside this eldritch mind...
-emi.withered_witch_head.description=You barely hear weird sounds. It laughed and suddenly you felt sick. It whispered and suddenly you felt better. Who know's what inside this eldritch mind...
+item.hunter_hat.name=Hunter Hat
+item.hunter_hat.description=Great for hunting. While hunting increases drop from mobs, but decreases experience.
+emi.hunter_hat.description=Great for hunting. While hunting increases Butchering by %s and Looting by %s, but decreases experience by %s%%.
+item.feather_boots.name=Feather Boots
+item.feather_boots.description=Despite the name, there are as many feathers as fingers on hand. You feel lighter in those, but smell like grilled meat.
+emi.feather_boots.description=Despite the name, there are as many feathers as fingers on hand. You feel %s%% lighter in those, but smell like grilled meat, which attracts monsters %s%% better.
+item.lifebuoy.name=Lifebuoy
+item.lifebuoy.description=It's very tight but also extremely light. No more drowning!
+emi.lifebuoy.description=It's very tight but also extremely light. No more drowning!emi.withered_witch_head.description=You barely hear weird sounds. It laughed and suddenly you felt sick. It whispered and suddenly you felt better. Who know's what inside this eldritch mind...

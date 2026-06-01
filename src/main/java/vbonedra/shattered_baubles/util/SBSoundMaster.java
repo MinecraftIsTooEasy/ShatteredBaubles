@@ -2,6 +2,7 @@ package vbonedra.shattered_baubles.util;
 
 
 import net.minecraft.EntityPlayer;
+import net.minecraft.Vec3;
 
 
 public class SBSoundMaster {

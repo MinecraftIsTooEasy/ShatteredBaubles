@@ -10,8 +10,12 @@ import vbonedra.shattered_baubles.items.*;
 
 
 public class SBItems {
-    // TODO: maybe add levels to baubles? salt_cube would slow down by 0.2 and then 0.4 and then 0.6 and then 0.8; maybe make salt_cube stackable to 4 and add new count in slot, so its possible to modify it with count?
+    // TODO: maybe add levels to baubles? salt_cube would slow down by 0.2 and then 0.4 and then 0.6 and then 0.8;
+    //      maybe make salt_cube stackable to 4 and add new count in slot, so its possible to modify it with count?
+    //      NOTE: requires baubles stack-size-zero bug
     // TODO: maybe make some baubles eatable? salt_cube and bottle_of_ghoul_blood would suit greatly
+    //      move all logic into helper class and create SBItemFood that would pull that logic while extending ItemFood, also rewrite SBItem into using helper class (all that just for an eatable Salt Cube??)
+    // TODO: maybe some items shouldn't use ADDITIONAL_PERCENT for attributes but multiply attributes level-growth
     public static final Item bottle_of_ghoul_blood = new BottleOfGhoulBlood(IdUtil.getNextItemID());
     public static final Item salt_cube = new SaltCube(IdUtil.getNextItemID());
     public static final Item leather_glove = new LeatherGlove(IdUtil.getNextItemID());
@@ -20,17 +24,23 @@ public class SBItems {
     public static final Item golden_egg = new GoldenEgg(IdUtil.getNextItemID());
     public static final Item flower_boots = new FlowerBoots(IdUtil.getNextItemID());
     public static final Item climbing_pick = new ClimbingPick(IdUtil.getNextItemID());
+    public static final Item hunter_hat = new HunterHat(IdUtil.getNextItemID());
+    public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
+    public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
 
     // TODO: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
-    // TODO: old hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
+    // TODO: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
+    // TODO: rowel - increases mount speed by % (too niche to have nerf, though maybe decrease jump height of mount with cap at 1 block)
     // TODO: tattered manuscript - increases hand enchantments by 1 level but takes xp on tool use (attack, mine, etc.)
-    // TODO: bracelet of might - increases health by % with cap
-    // TODO: feather boots - adds fall damage defence, but increases taken knockback
-    // TODO: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things)
+    // TODO: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
+    // TODO: NEXT bracelet of might - increases health by % with cap
+    // TODO: NEXT swimming mask - slows down oxygen usage but increases drowning damage
+    // TODO: NEXT flippers - increases water movement but slows down land movement
+    // TODO: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
 
 
     private static void registerItem(ItemRegistryEvent registry, String name, Item item) {
-        registry.register(ShatteredBaubles.MOD_ID, ShatteredBaubles.RESOURCE_ID + name, name, item);
+        registry.register(ShatteredBaubles.MOD_NAME, ShatteredBaubles.RESOURCE_ID + name, name, item);
     }
 
     public static void registerItems(ItemRegistryEvent event) {

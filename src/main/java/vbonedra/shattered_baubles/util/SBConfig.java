@@ -4,6 +4,7 @@ import fi.dy.masa.malilib.config.ConfigTab;
 import fi.dy.masa.malilib.config.SimpleConfigs;
 import fi.dy.masa.malilib.config.options.ConfigBase;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
+import fi.dy.masa.malilib.config.options.ConfigInteger;
 import vbonedra.shattered_baubles.ShatteredBaubles;
 
 import java.util.*;
@@ -18,6 +19,7 @@ public class SBConfig extends SimpleConfigs {
     public static final List<ConfigBase<?>> Total;
     public static final List<ConfigTab> tabs;
 
+    // TODO: add function that would automatically add translated description (ig hard to do since it would mean that we pull items which triggers classes that use uninitialized things)
     public SBConfig(String name, List<ConfigBase<?>> values) {
         super(name, null, values);
     }
@@ -25,11 +27,9 @@ public class SBConfig extends SimpleConfigs {
     public List<ConfigTab> getConfigTabs() {
         return tabs;
     }
-
     public static SBConfig getInstance() {
         return Instance;
     }
-
     public static ConfigDouble probabilityChest(String description, double probability) {
         return new ConfigDouble(description, probability,0.0,0.1);
     }
@@ -43,8 +43,8 @@ public class SBConfig extends SimpleConfigs {
             "Bottle of Ghoul Blood: Health Additional Percent",-0.25,-1.0,0.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP = new ConfigDouble(
             "Bottle of Ghoul Blood: Health Additional Cap",-100.0,-100.0,0.0,false,"");
-    public static final ConfigDouble bottle_of_ghoul_blood_REGENERATION_MULTIPLIER = new ConfigDouble(
-            "Bottle of Ghoul Blood: Regeneration Multiplier",0.5,0.0,1.0,false,"");
+    public static final ConfigDouble bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT = new ConfigDouble(
+            "Bottle of Ghoul Blood: Regeneration Additional Percent",0.5,0.0,1.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_PROBABILITY_Ghoul = new ConfigDouble(
             "Bottle of Ghoul Blood: Probability when Ghoul Dies",0.005,0.0,1.0,false,"");
 
@@ -92,7 +92,21 @@ public class SBConfig extends SimpleConfigs {
     public static final ConfigDouble climbing_pick_CLIMBING_SPEED_MULTIPLIER = new ConfigDouble(
             "Climbing Pick: Climbing Speed Multiplier",0.25,0.0,1.0,false,"");
 
-    // TODO: add function that would automatically add translated description (ig hard to do since it would mean that we pull items which triggers classes that use uninitialized things)
+
+    public static final ConfigDouble hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT = new ConfigDouble(
+            "Hunter Hat: Experience Additional Percent",-0.5,-1.0,0.0,false,"");
+    public static final ConfigInteger hunter_hat_BUTCHERING_ADDITIONAL_VALUE = new ConfigInteger(
+            "Hunter Hat: Butchering Additional Value",1,0,3,false,"");
+    public static final ConfigInteger hunter_hat_LOOTING_ADDITIONAL_VALUE = new ConfigInteger(
+            "Hunter Hat: Looting Additional Value",1,0,3,false,"");
+
+
+    public static final ConfigDouble feather_boots_FALL_DAMAGE_ADDITIONAL_PERCENT = new ConfigDouble(
+            "Feather Boots: Fall Damage Additional Percent",-0.5,-1.0,0.0,false,"");
+    public static final ConfigDouble feather_boots_DETECT_RANGE_MULRIPLIER = new ConfigDouble(
+            "Feather Boots: Detect Range MULTIPLIER",1.5,1.0,2.0,false,"");
+
+
     public static final Map<String, Map<String, ConfigDouble>> PROBABILITY_ChestName = new HashMap<>()
     {{
         put("ancient_gauntlet", new HashMap<>() {{
@@ -199,6 +213,45 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonOverworld",     probabilityChest("Climbing Pick: DungeonOverworld",                 0/155.0));
             put("DungeonUnderworld",    probabilityChest("Climbing Pick: DungeonUnderworld",                0/73.0));
         }});
+        put("hunter_hat", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Hunter Hat: DesertPyramid",                       0/67.0));
+            put("JunglePyramid",        probabilityChest("Hunter Hat: JunglePyramid",                       1/62.0));
+            put("Fortress",             probabilityChest("Hunter Hat: Fortress",                            1/66.0));
+            put("Mineshaft",            probabilityChest("Hunter Hat: Mineshaft",                           2/168.0));
+            put("StrongholdCorridor",   probabilityChest("Hunter Hat: StrongholdCorridor",                  3/189.0));
+            put("StrongholdCrossing",   probabilityChest("Hunter Hat: StrongholdCrossing",                  0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Hunter Hat: StrongholdLibrary",                   0/42.0));
+            put("SwampHut",             probabilityChest("Hunter Hat: SwampHut",                            1/98.0));
+            put("BlackSmith",           probabilityChest("Hunter Hat: BlackSmith",                          2/302.0));
+            put("DungeonOverworld",     probabilityChest("Hunter Hat: DungeonOverworld",                    1/155.0));
+            put("DungeonUnderworld",    probabilityChest("Hunter Hat: DungeonUnderworld",                   0/73.0));
+        }});
+        put("feather_boots", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Feather Boots: DesertPyramid",                    0/67.0));
+            put("JunglePyramid",        probabilityChest("Feather Boots: JunglePyramid",                    0/62.0));
+            put("Fortress",             probabilityChest("Feather Boots: Fortress",                         0/66.0));
+            put("Mineshaft",            probabilityChest("Feather Boots: Mineshaft",                        0/168.0));
+            put("StrongholdCorridor",   probabilityChest("Feather Boots: StrongholdCorridor",               0/189.0));
+            put("StrongholdCrossing",   probabilityChest("Feather Boots: StrongholdCrossing",               0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Feather Boots: StrongholdLibrary",                0/42.0));
+            put("SwampHut",             probabilityChest("Feather Boots: SwampHut",                         2/98.0));
+            put("BlackSmith",           probabilityChest("Feather Boots: BlackSmith",                       5/302.0));
+            put("DungeonOverworld",     probabilityChest("Feather Boots: DungeonOverworld",                 3/155.0));
+            put("DungeonUnderworld",    probabilityChest("Feather Boots: DungeonUnderworld",                0/73.0));
+        }});
+        put("lifebuoy", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Lifebuoy: DesertPyramid",                         0/67.0));
+            put("JunglePyramid",        probabilityChest("Lifebuoy: JunglePyramid",                         0/62.0));
+            put("Fortress",             probabilityChest("Lifebuoy: Fortress",                              0/66.0));
+            put("Mineshaft",            probabilityChest("Lifebuoy: Mineshaft",                             1/168.0));
+            put("StrongholdCorridor",   probabilityChest("Lifebuoy: StrongholdCorridor",                    1/189.0));
+            put("StrongholdCrossing",   probabilityChest("Lifebuoy: StrongholdCrossing",                    0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Lifebuoy: StrongholdLibrary",                     0/42.0));
+            put("SwampHut",             probabilityChest("Lifebuoy: SwampHut",                              0/98.0));
+            put("BlackSmith",           probabilityChest("Lifebuoy: BlackSmith",                            1/302.0));
+            put("DungeonOverworld",     probabilityChest("Lifebuoy: DungeonOverworld",                      2/155.0));
+            put("DungeonUnderworld",    probabilityChest("Lifebuoy: DungeonUnderworld",                     1/73.0));
+        }});
     }};
     public static List<ConfigDouble> getAllChestLoot() {
         return PROBABILITY_ChestName.values().stream()
@@ -217,7 +270,7 @@ public class SBConfig extends SimpleConfigs {
         OtherSettings = List.of(
                 bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT,
                 bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP,
-                bottle_of_ghoul_blood_REGENERATION_MULTIPLIER,
+                bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT,
 
                 leather_glove_MINING_SPEED_ADDITIONAL_PERCENT,
                 leather_glove_MINING_SPEED_ADDITIONAL_CAP,
@@ -239,6 +292,13 @@ public class SBConfig extends SimpleConfigs {
                 climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT,
                 climbing_pick_CLIMBING_SPEED_MULTIPLIER,
 
+                hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT,
+                hunter_hat_BUTCHERING_ADDITIONAL_VALUE,
+                hunter_hat_BUTCHERING_ADDITIONAL_VALUE,
+
+                feather_boots_FALL_DAMAGE_ADDITIONAL_PERCENT,
+                feather_boots_DETECT_RANGE_MULRIPLIER,
+
                 salt_cube_METABOLISM_MULTIPLIER
         );
 
@@ -252,6 +312,6 @@ public class SBConfig extends SimpleConfigs {
         tabs.add(new ConfigTab("chests", ChestLoot));
         tabs.add(new ConfigTab("other", OtherSettings));
 
-        Instance = new SBConfig(ShatteredBaubles.MOD_ID, Total);
+        Instance = new SBConfig(ShatteredBaubles.MOD_NAME, Total);
     }
 }
