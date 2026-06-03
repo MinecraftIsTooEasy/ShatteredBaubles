@@ -80,7 +80,7 @@ public abstract class EntityPlayerMixin {
         if ((Object) this instanceof EntityPlayer player) {
             return Math.max(0, original
                     + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedAdditional(player, original)
-                    + ((Flippers) SBItems.flippers).getLandMovementAdditional(player, original)
+//                    + ((Flippers) SBItems.flippers).getLandMovementAdditional(player, original)
             );
         }
         return original;
