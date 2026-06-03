@@ -10,12 +10,12 @@ import vbonedra.shattered_baubles.items.*;
 
 
 public class SBItems {
-    // TODO: maybe add levels to baubles? salt_cube would slow down by 0.2 and then 0.4 and then 0.6 and then 0.8;
+    // IDEA: maybe add levels to baubles? salt_cube would slow down by 0.2 and then 0.4 and then 0.6 and then 0.8;
     //      maybe make salt_cube stackable to 4 and add new count in slot, so its possible to modify it with count?
     //      NOTE: requires baubles stack-size-zero bug
-    // TODO: maybe make some baubles eatable? salt_cube and bottle_of_ghoul_blood would suit greatly
+    // IDEA: maybe make some baubles eatable? salt_cube and bottle_of_ghoul_blood would suit greatly
     //      move all logic into helper class and create SBItemFood that would pull that logic while extending ItemFood, also rewrite SBItem into using helper class (all that just for an eatable Salt Cube??)
-    // TODO: maybe some items shouldn't use ADDITIONAL_PERCENT for attributes but multiply attributes level-growth
+    // TODO: item.getBlaBlaBla(EntityPlayer player, Object blaBlaBla) { ... } - EntityPlayer player must be 1st argument
     public static final Item bottle_of_ghoul_blood = new BottleOfGhoulBlood(IdUtil.getNextItemID());
     public static final Item salt_cube = new SaltCube(IdUtil.getNextItemID());
     public static final Item leather_glove = new LeatherGlove(IdUtil.getNextItemID());
@@ -28,16 +28,16 @@ public class SBItems {
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
     public static final Item flippers = new Flippers(IdUtil.getNextItemID());
-    // TODO: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
+    // IDEA: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
 
-    // TODO: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
-    // TODO: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
-    // TODO: rowel - increases mount speed by % (too niche to have nerf, though maybe decrease jump height of mount with cap at 1 block)
-    // TODO: tattered manuscript - increases hand enchantments by 1 level but takes xp on tool use (attack, mine, etc.)
-    // TODO: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
-    // TODO: NEXT bracelet of might - increases health by % with cap
-    // TODO: NEXT swimming mask - slows down oxygen usage but increases drowning damage
-    // TODO: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
+    // IDEA: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
+    // IDEA: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
+    // IDEA: rowel - increases mount speed by % (too niche to have nerf, though maybe decrease jump height of mount with cap at 1 block)
+    // IDEA: tattered manuscript - increases hand enchantments by 1 level but takes xp on tool use (attack, mine, etc.)
+    // IDEA: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
+    // IDEA:NEXT bracelet of might - increases health by % with cap
+    // IDEA:NEXT swimming mask - slows down oxygen usage but increases drowning damage
+    // IDEA: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
 
 
     private static void registerItem(ItemRegistryEvent registry, String name, Item item) {

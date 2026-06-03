@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class SBEmiPlugin implements EmiPlugin {
-    // TODO: might lead into unwanted formatting? just seen weird thing, not sure that those are the problem
+    // might lead into unwanted formatting? just seen weird thing, not sure that those are the problem
     String descriptionName = "§f§l";
     String descriptionSourceColor = "§7";
 

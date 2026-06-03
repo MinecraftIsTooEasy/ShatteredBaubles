@@ -34,7 +34,6 @@ public class SBConfig extends SimpleConfigs {
     }
 
     // TODO: MULTIPLIER must be damn multiplier, not 0-100%, that's ADDITIONAL_PERCENT
-    // TODO: item.getBlaBlaBla(EntityPlayer player, Object blaBlaBla) { ... } - EntityPlayer player must be 1st argument
     public static final ConfigDouble salt_cube_METABOLISM_MULTIPLIER = new ConfigDouble(
             "Salt Cube: Metabolism Multiplier",0.5,0.0,1.0,false,"");
 
