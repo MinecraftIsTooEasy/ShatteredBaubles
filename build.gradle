@@ -75,7 +75,8 @@ java {
 }
 
 jar {
-    destinationDirectory = file("C:/Users/89107/OneDrive/Рабочий стол/launchers/MultiMC/instances/MiTE-moddev/minecraft/mods")
+    // used for testing in non-modding environment
+//    destinationDirectory = file("C:/Users/89107/OneDrive/Рабочий стол/launchers/MultiMC/instances/MiTE-moddev/minecraft/mods")
 }
 
 tasks.named('runClient', JavaExec).configure { exec ->
