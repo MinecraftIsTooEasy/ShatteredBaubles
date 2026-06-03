@@ -12,7 +12,7 @@ import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import static vbonedra.shattered_baubles.event.SBSounds.*;
-import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.SBConfig.*;
 
 
 public class HunterHat extends SBItem {

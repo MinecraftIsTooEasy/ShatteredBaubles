@@ -1,20 +1,15 @@
 package vbonedra.shattered_baubles.mixin;
 
-import baubles.api.BaubleSlotHelper;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 import vbonedra.shattered_baubles.items.BottleOfGhoulBlood;
 import vbonedra.shattered_baubles.items.SaltCube;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.SBConfig;
 
 @Mixin(FoodStats.class)
 public abstract class FoodStatsMixin {

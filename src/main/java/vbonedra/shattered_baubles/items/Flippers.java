@@ -9,12 +9,10 @@ import net.minecraft.ItemStack;
 import net.minecraft.Material;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.MathAdditional;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
 
-import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_CHAIN;
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_IRON;
-import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class Flippers extends SBItem {
     public Flippers(int id) {

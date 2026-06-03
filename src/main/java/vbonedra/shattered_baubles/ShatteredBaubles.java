@@ -6,7 +6,6 @@ import net.xiaoyu233.fml.ModResourceManager;
 import net.xiaoyu233.fml.reload.event.MITEEvents;
 import vbonedra.shattered_baubles.event.FMLEvents;
 import vbonedra.shattered_baubles.event.RICEvents;
-import vbonedra.shattered_baubles.util.SBConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import org.apache.logging.log4j.LogManager;

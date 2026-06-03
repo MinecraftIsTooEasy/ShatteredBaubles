@@ -12,7 +12,7 @@ import vbonedra.shattered_baubles.util.IPlayerNBT;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
-import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class RingOfPride extends SBItem {
     public RingOfPride(int id) {

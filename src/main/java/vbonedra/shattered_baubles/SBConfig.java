@@ -1,11 +1,10 @@
-package vbonedra.shattered_baubles.util;
+package vbonedra.shattered_baubles;
 
 import fi.dy.masa.malilib.config.ConfigTab;
 import fi.dy.masa.malilib.config.SimpleConfigs;
 import fi.dy.masa.malilib.config.options.ConfigBase;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
-import vbonedra.shattered_baubles.ShatteredBaubles;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,7 +33,8 @@ public class SBConfig extends SimpleConfigs {
         return new ConfigDouble(description, probability,0.0,0.1);
     }
 
-
+    // TODO: MULTIPLIER must be damn multiplier, not 0-100%, that's ADDITIONAL_PERCENT
+    // TODO: item.getBlaBlaBla(EntityPlayer player, Object blaBlaBla) { ... } - EntityPlayer player must be 1st argument
     public static final ConfigDouble salt_cube_METABOLISM_MULTIPLIER = new ConfigDouble(
             "Salt Cube: Metabolism Multiplier",0.5,0.0,1.0,false,"");
 

@@ -5,7 +5,7 @@ import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.SBConfig;
+import vbonedra.shattered_baubles.SBConfig;
 
 
 @Mixin(EntityGhoul.class)

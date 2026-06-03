@@ -28,6 +28,7 @@ public class SBItems {
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
     public static final Item flippers = new Flippers(IdUtil.getNextItemID());
+    // TODO: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
 
     // TODO: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
     // TODO: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance

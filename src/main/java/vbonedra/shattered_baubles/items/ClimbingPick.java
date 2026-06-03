@@ -9,7 +9,7 @@ import vbonedra.shattered_baubles.SBItems;
 import java.util.Set;
 
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
-import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.SBConfig.*;
 import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundAtPlayer;
 
 public class ClimbingPick extends SBItem {

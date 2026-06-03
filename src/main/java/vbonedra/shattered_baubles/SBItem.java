@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static vbonedra.shattered_baubles.ShatteredBaubles.LOGGER;
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
-import static vbonedra.shattered_baubles.util.SBConfig.PROBABILITY_ChestName;
+import static vbonedra.shattered_baubles.SBConfig.PROBABILITY_ChestName;
 
 public abstract class SBItem extends Item implements IBauble {
     public SBItem(int id, Material material, String texture) {

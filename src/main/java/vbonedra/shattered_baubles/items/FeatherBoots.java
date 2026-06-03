@@ -2,16 +2,13 @@ package vbonedra.shattered_baubles.items;
 
 import baubles.api.BaubleSlotHelper;
 import baubles.api.BaubleType;
-import net.minecraft.EntityLivingBase;
 import net.minecraft.EntityPlayer;
 import net.minecraft.ItemStack;
 import net.minecraft.Material;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
-import vbonedra.shattered_baubles.util.SBSoundMaster;
 
-import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
-import static vbonedra.shattered_baubles.util.SBConfig.*;
+import static vbonedra.shattered_baubles.SBConfig.*;
 import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundAtPlayer;
 
 public class FeatherBoots extends SBItem {

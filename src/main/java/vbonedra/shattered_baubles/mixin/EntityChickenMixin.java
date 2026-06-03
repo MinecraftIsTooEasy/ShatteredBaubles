@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import vbonedra.shattered_baubles.SBItems;
 
-import static vbonedra.shattered_baubles.util.SBConfig.golden_egg_PROBABILITY_ChickenLayEgg;
+import static vbonedra.shattered_baubles.SBConfig.golden_egg_PROBABILITY_ChickenLayEgg;
 
 @Mixin(EntityChicken.class)
 public abstract class EntityChickenMixin {
