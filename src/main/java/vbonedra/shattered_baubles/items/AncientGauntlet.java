@@ -20,7 +20,7 @@ public class AncientGauntlet extends SBItem {
     public AncientGauntlet(int id) {
         super(id, Material.ancient_metal, "ancient_gauntlet");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(ancient_gauntlet_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round(ancient_gauntlet_DAMAGE_ADDITIONAL_CAP.getDoubleValue()),

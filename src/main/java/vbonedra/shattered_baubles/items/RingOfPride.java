@@ -18,7 +18,7 @@ public class RingOfPride extends SBItem {
     public RingOfPride(int id) {
         super(id, Material.gold, "ring_of_pride");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER.getDoubleValue()

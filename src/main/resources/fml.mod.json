@@ -8,13 +8,12 @@
   },
   "environment": "*",
   "name": "ShatteredBaubles",
-  "description": "Add a series of uncanny baubles.",
+  "description": "Add a series of baubles.",
   "authors": [
     "vbonedra"
   ],
   "entrypoints": {
     "preLaunch": [
-      "vbonedra.shattered_baubles.ShatteredBaubles"
     ],
     "main": [
       "vbonedra.shattered_baubles.ShatteredBaubles"

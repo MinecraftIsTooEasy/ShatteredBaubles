@@ -32,8 +32,7 @@ public class SBEmiPlugin implements EmiPlugin {
         List<EmiIngredient> stacks = Collections.singletonList(EmiStack.of(new ItemStack(item)));
         List<Text> text = new ArrayList<>(Arrays.asList(
                 Text.literal(descriptionName + Translator.get("item.%s.name".formatted(name))),
-                item.getEmiDescription(),
-                Text.literal(descriptionSourceColor + Translator.get("emi.obtain.source"))
+                Text.literal(item.formatDescriptionWithConfigValues(Translator.get("emi.%s.description".formatted(item.texture))))
         ));
         for (String chestName : new String[]{
                 "DesertPyramid",
@@ -49,11 +48,16 @@ public class SBEmiPlugin implements EmiPlugin {
                 "DungeonUnderworld"}
         ) {
             if (item.getChestLoot(chestName)[3] > 0)
-                text.add(Text.literal(" " + descriptionSourceColor + Translator.get("emi.obtain.chests."+chestName).formatted((float) item.getChestLoot(chestName)[4] / 100)));
+                text.add(Text.literal(" " +
+                        descriptionSourceColor +
+                        Translator.get("emi.obtain.chests."+chestName) +
+                        Translator.get("emi.obtain.chests.chance").formatted((float) item.getChestLoot(chestName)[4] / 100)
+                ));
         }
-//        if (text.size() > 3) {
-//            text.add(3, Text.literal("  "+descriptionSourceColor + Translator.get("emi.obtain.chests")));
-//        }
+        // TODO: add optional source info (for example, Chicken laying Golden Egg. would add only if theres additional info, no "emi.item_name.description" in-game)
+        if (text.size() > 2) {
+            text.add(2, Text.literal(descriptionSourceColor + Translator.get("emi.obtain.source")));
+        }
         registry.addRecipe(new EmiInfoRecipe(
             stacks,
             text,

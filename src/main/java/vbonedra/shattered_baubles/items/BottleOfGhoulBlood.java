@@ -14,7 +14,7 @@ public class BottleOfGhoulBlood extends SBItem {
     public BottleOfGhoulBlood(int id) {
         super(id, Material.glass, "bottle_of_ghoul_blood");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round(bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue()*100)

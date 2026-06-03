@@ -19,7 +19,7 @@ public class LeatherGlove extends SBItem {
     public LeatherGlove(int id) {
         super(id, Material.leather, "leather_glove");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(leather_glove_MINING_SPEED_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round(leather_glove_MINING_SPEED_ADDITIONAL_CAP.getDoubleValue()),

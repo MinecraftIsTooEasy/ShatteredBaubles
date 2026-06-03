@@ -77,10 +77,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
                             Block block = player.worldObj.getBlock(x, y, z);
                             if (block != null) {
                                 Material material = block.blockMaterial;
-                                if (
-                                        ((ClimbingPick) SBItems.climbing_pick).climbWall(player, material) ||
-                                                ((FlowerBoots) SBItems.flower_boots).climbWall(player, material)
-                                ) {
+                                if (((ClimbingPick) SBItems.climbing_pick).climbWall(player, material) || ((FlowerBoots) SBItems.flower_boots).climbWall(player, material)) {
                                     playRandomizedSoundAtPlayer(
                                             player,
                                             block.stepSound.getBreakSound(),

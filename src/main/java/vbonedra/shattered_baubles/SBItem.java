@@ -7,7 +7,6 @@ import baubles.common.lib.PlayerHandler;
 import baubles.creativetab.BaublesCreativeTab;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import net.minecraft.*;
-import shims.java.net.minecraft.text.Text;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import java.util.Map;
 
 import static vbonedra.shattered_baubles.ShatteredBaubles.LOGGER;
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
-import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
 import static vbonedra.shattered_baubles.util.SBConfig.PROBABILITY_ChestName;
 
 public abstract class SBItem extends Item implements IBauble {
@@ -86,11 +84,8 @@ public abstract class SBItem extends Item implements IBauble {
         }
     }
 
-    public Text getEmiDescription() {
-        return Text.literal(formatTextWithConfigValues(Translator.get("emi.%s.description".formatted(this.texture))));
-    }
     // formatTextWithConfigValues must be modified if inserting values in emi.{this.texture}.description via "%s"
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text;
     }
 

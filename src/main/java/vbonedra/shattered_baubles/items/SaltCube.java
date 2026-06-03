@@ -14,7 +14,7 @@ public class SaltCube extends SBItem {
     public SaltCube(int id) {
         super(id, Material.sugar, "salt_cube");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 salt_cube_METABOLISM_MULTIPLIER.getDoubleValue()
         );

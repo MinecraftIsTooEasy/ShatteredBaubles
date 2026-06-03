@@ -19,7 +19,7 @@ public class HunterHat extends SBItem {
     public HunterHat(int id) {
         super(id, Material.leather, "hunter_hat");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 hunter_hat_BUTCHERING_ADDITIONAL_VALUE.getIntegerValue(),
                 hunter_hat_LOOTING_ADDITIONAL_VALUE.getIntegerValue(),

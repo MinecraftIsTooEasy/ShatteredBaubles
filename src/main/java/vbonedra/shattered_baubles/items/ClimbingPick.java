@@ -16,7 +16,7 @@ public class ClimbingPick extends SBItem {
     public ClimbingPick(int id) {
         super(id, Material.mithril, "climbing_pick");
     }
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100)
         );
@@ -63,34 +63,23 @@ public class ClimbingPick extends SBItem {
         if (!BaubleSlotHelper.hasBeltOfType(player, SBItems.climbing_pick)) return false;
         if (climbableMaterials.contains(material)) {
             float climbingSpeed = (float) (player.getClimbingSpeed() * climbing_pick_CLIMBING_SPEED_MULTIPLIER.getDoubleValue());
-
             if (player.isSneaking() && !player.onGround) {
                 if (player.motionY >= -climbingSpeed*10) {
                     player.fallDistance = 0.0F;
                     if (player.rotationPitch < -45.0F) {
-                        player.motionY = climbingSpeed;
+                        player.motionY = Math.max(player.motionY,climbingSpeed);
                     } else if (player.rotationPitch > 45.0F) {
-                        player.motionY = -climbingSpeed;
+                        player.motionY = Math.min(player.motionY,-climbingSpeed);
                     } else {
                         player.motionY = 0;
                     }
-                    if (player.ticksExisted % 10 == 0 &&
-                            (
-                                    player.motionY != 0 ||
-                                    player.moveForward != 0 ||
-                                    player.moveStrafing != 0
-                            )
-                    ) {
-                        System.out.println("sound");
-                        return true;
-                    }
+                    return player.ticksExisted % 10 == 0 && (player.motionY != 0 || player.moveForward != 0 || player.moveStrafing != 0);
                 } else {
                     player.fallDistance *= 0.9F;
                     player.motionY *= 0.9;
                     return true;
                 }
             }
-
             return false;
         }
         return false;

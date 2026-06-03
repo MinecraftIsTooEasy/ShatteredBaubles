@@ -16,7 +16,7 @@ import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundA
 
 public class FeatherBoots extends SBItem {
     public FeatherBoots(int id) {super(id, Material.meat, "feather_boots");}
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(-feather_boots_FALL_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round((feather_boots_DETECT_RANGE_MULRIPLIER.getDoubleValue()-1)*100)

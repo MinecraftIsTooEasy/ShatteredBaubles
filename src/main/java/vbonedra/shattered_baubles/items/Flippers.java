@@ -1,0 +1,47 @@
+package vbonedra.shattered_baubles.items;
+
+
+import baubles.api.BaubleSlotHelper;
+import baubles.api.BaubleType;
+import net.minecraft.EntityLivingBase;
+import net.minecraft.EntityPlayer;
+import net.minecraft.ItemStack;
+import net.minecraft.Material;
+import vbonedra.shattered_baubles.SBItem;
+import vbonedra.shattered_baubles.SBItems;
+import vbonedra.shattered_baubles.util.MathAdditional;
+import vbonedra.shattered_baubles.util.SBSoundMaster;
+
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_CHAIN;
+import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_IRON;
+import static vbonedra.shattered_baubles.util.SBConfig.*;
+
+public class Flippers extends SBItem {
+    public Flippers(int id) {
+        super(id, Material.leather, "flippers");
+    }
+
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.FEET;
+    }
+
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 1.0);
+    }
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
+        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 0.75);
+    }
+
+    public float getLandMovementAdditional(EntityPlayer player, float speed) {
+        return (float) (speed * bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
+    }
+    public float getWaterMovementAdditional(EntityPlayer player, float speed) {
+        return (float) (speed * bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
+    }
+}

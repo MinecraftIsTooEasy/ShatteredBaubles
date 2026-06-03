@@ -1,17 +1,18 @@
 emi.obtain.source=Source:
 
 emi.obtain.chests=Spawns in chests:
-emi.obtain.chests.DesertPyramid=Desert Pyramid (~%s%%)
-emi.obtain.chests.JunglePyramid=Jungle Pyramid (~%s%%)
-emi.obtain.chests.Fortress=Fortress (~%s%%)
-emi.obtain.chests.Mineshaft=Mineshaft (~%s%%)
-emi.obtain.chests.StrongholdCorridor=Stronghold Corridor (~%s%%)
-emi.obtain.chests.StrongholdCrossing=Stronghold Crossing (~%s%%)
-emi.obtain.chests.StrongholdLibrary=Stronghold Library (~%s%%)
-emi.obtain.chests.SwampHut=Swamp Hut (~%s%%)
-emi.obtain.chests.BlackSmith=Blacksmith (~%s%%)
-emi.obtain.chests.DungeonOverworld=Dungeon Overworld (~%s%%)
-emi.obtain.chests.DungeonUnderworld=Dungeon Underworld (~%s%%)
+emi.obtain.chests.DesertPyramid=Desert Pyramid
+emi.obtain.chests.JunglePyramid=Jungle Pyramid
+emi.obtain.chests.Fortress=Fortress
+emi.obtain.chests.Mineshaft=Mineshaft
+emi.obtain.chests.StrongholdCorridor=Stronghold Corridor
+emi.obtain.chests.StrongholdCrossing=Stronghold Crossing
+emi.obtain.chests.StrongholdLibrary=Stronghold Library
+emi.obtain.chests.SwampHut=Swamp Hut
+emi.obtain.chests.BlackSmith=Blacksmith
+emi.obtain.chests.DungeonOverworld=Dungeon Overworld
+emi.obtain.chests.DungeonUnderworld=Dungeon Underworld
+emi.obtain.chests.chance=: %s%%
 
 emi.obtain.mobs=Drops from mobs:
 emi.obtain.mobs.ghoul=Ghoul

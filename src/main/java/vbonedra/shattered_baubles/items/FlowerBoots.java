@@ -15,7 +15,7 @@ import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundA
 
 public class FlowerBoots extends SBItem {
     public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
-    public String formatTextWithConfigValues(String text) {
+    public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round(flower_boots_MOVEMENT_SPEED_ADDITIONAL_PERCENT.getDoubleValue()*100),
                 Math.round(flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100)
@@ -49,7 +49,7 @@ public class FlowerBoots extends SBItem {
     public float getFireDamageAdditionalPercent(EntityPlayer player, float damage) {
         return damage * (float) (BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots) ? (flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()) : 0);
     }
-    public float getMovementSpeedMultiplier(EntityPlayer player, float speed) {
+    public float getMovementSpeedAdditional(EntityPlayer player, float speed) {
         if (!BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots)) return 0.0F;
 
         Material material = player.worldObj.getBlockMaterial(
@@ -65,27 +65,18 @@ public class FlowerBoots extends SBItem {
         if (!BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots)) return false;
         if (plantMaterials.contains(material)) {
             float climbingSpeed = (float) (player.getClimbingSpeed() * flower_boots_CLIMBING_SPEED_MULTIPLIER.getDoubleValue());
-
             if (!player.onGround) {
                 player.fallDistance = 0.0F;
                 if (player.rotationPitch < -45.0F) {
-                    player.motionY = climbingSpeed;
+                    player.motionY = Math.max(player.motionY,climbingSpeed);
                 } else if (player.rotationPitch > 45.0F) {
-                    player.motionY = -climbingSpeed;
-                } else {
+                    player.motionY = Math.min(player.motionY,-climbingSpeed);
+                } else if (player.isSneaking()) {
                     player.motionY = 0;
                 }
-                if (player.motionY != 0 && player.ticksExisted % 10 == 0) {
-                    playRandomizedSoundAtPlayer(
-                            player,
-                            "dig.leave",
-                            0.75, 0.1,
-                            0.75, 0.1
-                    );
-                }
+                return player.ticksExisted % 10 == 0 && (player.motionY != 0 || player.moveForward != 0 || player.moveStrafing != 0);
             }
-
-            return true;
+            return false;
         }
         return false;
     }

@@ -7,6 +7,7 @@ version = project.mod_version
 group = project.maven_group
 
 base {
+    // maybe use as for fancy file name: "MiTE:" + project.archives_base_name - for example
 //    archivesName = "[经验饰品]" + project.archives_base_name
 }
 
@@ -46,7 +47,7 @@ loom {
     mergedMinecraftJar()
 
     mods {
-        "UncannyBaubles" {
+        "ShatteredBaubles" {
             sourceSet sourceSets.main
         }
     }
@@ -75,7 +76,7 @@ java {
 }
 
 jar {
-    // used for testing in non-modding environment
+    // used for testing in non-modding environment, im too lazy to save it anywhere else
 //    destinationDirectory = file("C:/Users/89107/OneDrive/Рабочий стол/launchers/MultiMC/instances/MiTE-moddev/minecraft/mods")
 }
 

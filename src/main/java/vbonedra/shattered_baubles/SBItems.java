@@ -27,6 +27,7 @@ public class SBItems {
     public static final Item hunter_hat = new HunterHat(IdUtil.getNextItemID());
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
+    public static final Item flippers = new Flippers(IdUtil.getNextItemID());
 
     // TODO: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
     // TODO: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
@@ -35,7 +36,6 @@ public class SBItems {
     // TODO: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
     // TODO: NEXT bracelet of might - increases health by % with cap
     // TODO: NEXT swimming mask - slows down oxygen usage but increases drowning damage
-    // TODO: NEXT flippers - increases water movement but slows down land movement
     // TODO: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
 
 
