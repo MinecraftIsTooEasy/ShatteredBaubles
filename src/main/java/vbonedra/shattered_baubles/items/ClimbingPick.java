@@ -18,7 +18,7 @@ public class ClimbingPick extends SBItem {
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(climbing_pick_FALL_DAMAGE_MULTIPLIER.getDoubleValue()*100)
+                Math.round((climbing_pick_FALL_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100)
         );
     }
 

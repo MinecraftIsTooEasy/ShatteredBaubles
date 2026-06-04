@@ -20,7 +20,7 @@ public class RingOfPride extends SBItem {
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(ring_of_pride_EXPERIENCE_MULTIPLIER.getDoubleValue()*100),
+                Math.round((ring_of_pride_EXPERIENCE_MULTIPLIER.getDoubleValue()-1)*100),
                 ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER.getDoubleValue()
                 );
     }

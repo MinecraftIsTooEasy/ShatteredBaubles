@@ -17,25 +17,13 @@ public class FlowerBoots extends SBItem {
     public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(flower_boots_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue()*100),
-                Math.round(flower_boots_FIRE_DAMAGE_MULTIPLIER.getDoubleValue()*100)
+                Math.round((flower_boots_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue()-1)*100),
+                Math.round((flower_boots_FIRE_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100)
         );
     }
 
     @Override public BaubleType getBaubleType(ItemStack itemstack) {
         return BaubleType.FEET;
-    }
-
-
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
-        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_GENERIC, 0.5, 1.0);
-    }
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
-        SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_GENERIC, 0.5, 0.75);
     }
 
 

@@ -15,7 +15,7 @@ public class FeatherBoots extends SBItem {
     public FeatherBoots(int id) {super(id, Material.meat, "feather_boots");}
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(-feather_boots_FALL_DAMAGE_MULTIPLIER.getDoubleValue()*100),
+                Math.round((-feather_boots_FALL_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100),
                 Math.round((feather_boots_DETECT_RANGE_MULRIPLIER.getDoubleValue()-1)*100)
         );
     }
