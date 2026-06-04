@@ -23,7 +23,7 @@ public class HunterHat extends SBItem {
         return text.formatted(
                 hunter_hat_BUTCHERING_ADDITIONAL_VALUE.getIntegerValue(),
                 hunter_hat_LOOTING_ADDITIONAL_VALUE.getIntegerValue(),
-                Math.round(hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue()*100)
+                Math.round(hunter_hat_EXPERIENCE_MULTIPLIER.getDoubleValue()*100)
         );
     }
 
@@ -51,7 +51,7 @@ public class HunterHat extends SBItem {
         return BaubleSlotHelper.hasHeadOfType(player, SBItems.hunter_hat) ? hunter_hat_LOOTING_ADDITIONAL_VALUE.getIntegerValue() : 0;
     }
     public int getAdditionalExperience(int xp, EntityPlayer player) {
-        return BaubleSlotHelper.hasHeadOfType(player, SBItems.hunter_hat) ? (int) (xp * hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue()) : 0;
+        return BaubleSlotHelper.hasHeadOfType(player, SBItems.hunter_hat) ? (int) (xp * hunter_hat_EXPERIENCE_MULTIPLIER.getDoubleValue()) : 0;
     }
 
 }

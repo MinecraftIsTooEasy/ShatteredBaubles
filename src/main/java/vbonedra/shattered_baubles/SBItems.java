@@ -27,7 +27,7 @@ public class SBItems {
     public static final Item hunter_hat = new HunterHat(IdUtil.getNextItemID());
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
-    public static final Item flippers = new Flippers(IdUtil.getNextItemID());
+//    public static final Item flippers = new Flippers(IdUtil.getNextItemID());
     // IDEA: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
 
     // IDEA: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens

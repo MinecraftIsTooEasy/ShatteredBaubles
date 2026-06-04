@@ -100,7 +100,8 @@ public abstract class SBItem extends Item implements IBauble {
         for (int i = 0; i < baubles.getSizeInventory(); i++) {
             if (baubles.getStackInSlot(i) == null && baubles.isItemValidForSlot(i, item_stack)) {
                 if (player.onServer()) {
-                    baubles.setInventorySlotContents(i, item_stack.copy());
+//                    baubles.setInventorySlotContents(i, item_stack.copy()); // causes log errors? weird
+                    baubles.setInventorySlotContents(i, item_stack);
                     if (!player.capabilities.isCreativeMode) {
                         player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
                     }

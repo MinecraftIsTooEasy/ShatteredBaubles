@@ -42,9 +42,9 @@ public class SBConfig extends SimpleConfigs {
             "Bottle of Ghoul Blood: Health Additional Percent",-0.25,-1.0,0.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP = new ConfigDouble(
             "Bottle of Ghoul Blood: Health Additional Cap",-100.0,-100.0,0.0,false,"");
-    public static final ConfigDouble bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Bottle of Ghoul Blood: Regeneration Additional Percent",0.5,0.0,1.0,false,"");
-    public static final ConfigDouble bottle_of_ghoul_blood_PROBABILITY_Ghoul = new ConfigDouble(
+    public static final ConfigDouble bottle_of_ghoul_blood_REGENERATION_MULTIPLIER = new ConfigDouble(
+            "Bottle of Ghoul Blood: Regeneration Multiplier",2.0,1.0,2.0,false,"");
+    public static final ConfigDouble bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop = new ConfigDouble(
             "Bottle of Ghoul Blood: Probability when Ghoul Dies",0.005,0.0,1.0,false,"");
 
 
@@ -68,8 +68,8 @@ public class SBConfig extends SimpleConfigs {
             "Ancient Gauntlet: Damage Additional Cap",2.0,0.0,100.0,false,"");
 
 
-    public static final ConfigDouble ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Ring of Pride: Experience Additional Percent",0.5,0.0,1.0,false,"");
+    public static final ConfigDouble ring_of_pride_EXPERIENCE_MULTIPLIER = new ConfigDouble(
+            "Ring of Pride: Experience Multiplier",1.5,1.0,2.0,false,"");
     public static final ConfigDouble ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER = new ConfigDouble(
             "Ring of Pride: Experience Punishment Multiplier",1.5,1.0,2.0,false,"");
 
@@ -78,32 +78,38 @@ public class SBConfig extends SimpleConfigs {
             "Golden Egg: Probability when Chicken Lays Egg",1.0/(16*9),0.0,1.0,false,"");
 
 
-    public static final ConfigDouble flower_boots_MOVEMENT_SPEED_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Flower Boots: Movement Speed Additional Percent",0.15,0.0,1.0,false,"");
-    public static final ConfigDouble flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Flower Boots: Fire Damage Additional Percent",1.0,0.0,1.0,false,"");
+    public static final ConfigDouble flower_boots_MOVEMENT_SPEED_MULTIPLIER = new ConfigDouble(
+            "Flower Boots: Movement Speed Multiplier",1.15,1.0,2.0,false,"");
+    public static final ConfigDouble flower_boots_FIRE_DAMAGE_MULTIPLIER = new ConfigDouble(
+            "Flower Boots: Fire Damage Multiplier",2.0,1.0,2.0,false,"");
     public static final ConfigDouble flower_boots_CLIMBING_SPEED_MULTIPLIER = new ConfigDouble(
             "Flower Boots: Climbing Speed Multiplier",0.5,0.0,1.0,false,"");
 
 
-    public static final ConfigDouble climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Climbing Pick: Fall Damage Additional Percent",1.0,0.0,1.0,false,"");
+    public static final ConfigDouble climbing_pick_FALL_DAMAGE_MULTIPLIER = new ConfigDouble(
+            "Climbing Pick: Fall Damage Multiplier",2.0,1.0,2.0,false,"");
     public static final ConfigDouble climbing_pick_CLIMBING_SPEED_MULTIPLIER = new ConfigDouble(
             "Climbing Pick: Climbing Speed Multiplier",0.25,0.0,1.0,false,"");
 
 
-    public static final ConfigDouble hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Hunter Hat: Experience Additional Percent",-0.5,-1.0,0.0,false,"");
+    public static final ConfigDouble hunter_hat_EXPERIENCE_MULTIPLIER = new ConfigDouble(
+            "Hunter Hat: Experience Multiplier",0.5,0.0,1.0,false,"");
     public static final ConfigInteger hunter_hat_BUTCHERING_ADDITIONAL_VALUE = new ConfigInteger(
             "Hunter Hat: Butchering Additional Value",1,0,3,false,"");
     public static final ConfigInteger hunter_hat_LOOTING_ADDITIONAL_VALUE = new ConfigInteger(
             "Hunter Hat: Looting Additional Value",1,0,3,false,"");
 
 
-    public static final ConfigDouble feather_boots_FALL_DAMAGE_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Feather Boots: Fall Damage Additional Percent",-0.5,-1.0,0.0,false,"");
+    public static final ConfigDouble feather_boots_FALL_DAMAGE_MULTIPLIER = new ConfigDouble(
+            "Feather Boots: Fall Damage Multiplier",0.5,0.0,1.0,false,"");
     public static final ConfigDouble feather_boots_DETECT_RANGE_MULRIPLIER = new ConfigDouble(
-            "Feather Boots: Detect Range MULTIPLIER",1.5,1.0,2.0,false,"");
+            "Feather Boots: Detect Range Multiplier",1.5,1.0,2.0,false,"");
+
+
+    public static final ConfigDouble flippers_MOVEMENT_SPEED_MULTIPLIER = new ConfigDouble(
+            "Copper Flippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
+    public static final ConfigDouble flippers_SWIMMING_SPEED_MULRIPLIER = new ConfigDouble(
+            "Copper Flippers: Swimming Speed Multiplier",1.25,1.0,2.0,false,"");
 
 
     public static final Map<String, Map<String, ConfigDouble>> PROBABILITY_ChestName = new HashMap<>()
@@ -263,13 +269,13 @@ public class SBConfig extends SimpleConfigs {
     static {
         DropProbabilities = List.of(
                 golden_egg_PROBABILITY_ChickenLayEgg,
-                bottle_of_ghoul_blood_PROBABILITY_Ghoul
+                bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop
         );
         ChestLoot = getAllChestLoot();
         OtherSettings = List.of(
                 bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT,
                 bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP,
-                bottle_of_ghoul_blood_REGENERATION_ADDITIONAL_PERCENT,
+                bottle_of_ghoul_blood_REGENERATION_MULTIPLIER,
 
                 leather_glove_MINING_SPEED_ADDITIONAL_PERCENT,
                 leather_glove_MINING_SPEED_ADDITIONAL_CAP,
@@ -281,22 +287,25 @@ public class SBConfig extends SimpleConfigs {
                 ancient_gauntlet_DAMAGE_ADDITIONAL_PERCENT,
                 ancient_gauntlet_DAMAGE_ADDITIONAL_CAP,
 
-                ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT,
+                ring_of_pride_EXPERIENCE_MULTIPLIER,
                 ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER,
 
-                flower_boots_MOVEMENT_SPEED_ADDITIONAL_PERCENT,
-                flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT,
+                flower_boots_MOVEMENT_SPEED_MULTIPLIER,
+                flower_boots_FIRE_DAMAGE_MULTIPLIER,
                 flower_boots_CLIMBING_SPEED_MULTIPLIER,
 
-                climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT,
+                climbing_pick_FALL_DAMAGE_MULTIPLIER,
                 climbing_pick_CLIMBING_SPEED_MULTIPLIER,
 
-                hunter_hat_EXPERIENCE_ADDITIONAL_PERCENT,
+                hunter_hat_EXPERIENCE_MULTIPLIER,
                 hunter_hat_BUTCHERING_ADDITIONAL_VALUE,
                 hunter_hat_BUTCHERING_ADDITIONAL_VALUE,
 
-                feather_boots_FALL_DAMAGE_ADDITIONAL_PERCENT,
+                feather_boots_FALL_DAMAGE_MULTIPLIER,
                 feather_boots_DETECT_RANGE_MULRIPLIER,
+
+                flippers_MOVEMENT_SPEED_MULTIPLIER,
+                flippers_SWIMMING_SPEED_MULRIPLIER,
 
                 salt_cube_METABOLISM_MULTIPLIER
         );

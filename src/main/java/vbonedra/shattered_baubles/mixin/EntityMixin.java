@@ -14,13 +14,12 @@ public abstract class EntityMixin {
     @ModifyReturnValue(method = "handleWaterMovement()Z", at = @At("RETURN"))
     private boolean modifyWaterMovement(boolean inWater) {
         if (inWater && (Object) this instanceof EntityPlayer player) {
-
             if (BaubleSlotHelper.hasBeltOfType(player, SBItems.lifebuoy)) {
                 if (player.motionY < 0.1D) {
                     player.motionY += 0.1D;
+                    if (!player.worldObj.isRemote) player.entityFX(EnumEntityFX.splash);
                 }
             }
-
         }
         return inWater;
     }

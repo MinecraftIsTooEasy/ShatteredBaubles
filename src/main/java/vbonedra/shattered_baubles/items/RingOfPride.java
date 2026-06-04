@@ -20,7 +20,7 @@ public class RingOfPride extends SBItem {
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue()*100),
+                Math.round(ring_of_pride_EXPERIENCE_MULTIPLIER.getDoubleValue()*100),
                 ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER.getDoubleValue()
                 );
     }
@@ -56,7 +56,7 @@ public class RingOfPride extends SBItem {
 
     public int getAdditionalExperience(int xp, EntityPlayer player) {
         if (player != null) {
-            xp = (int) (xp * ring_of_pride_EXPERIENCE_ADDITIONAL_PERCENT.getDoubleValue() * BaubleSlotHelper.countRingsOfType(player, SBItems.ring_of_pride));
+            xp = (int) (xp * ring_of_pride_EXPERIENCE_MULTIPLIER.getDoubleValue() * BaubleSlotHelper.countRingsOfType(player, SBItems.ring_of_pride));
             IPlayerNBT pridePlayer = (IPlayerNBT) player;
             pridePlayer.shatteredBaubles$addRingOfPrideSharedExperience((int) (xp * ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER.getDoubleValue()));
         }

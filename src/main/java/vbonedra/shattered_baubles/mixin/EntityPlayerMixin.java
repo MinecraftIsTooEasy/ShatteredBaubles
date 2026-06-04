@@ -21,6 +21,9 @@ public abstract class EntityPlayerMixin {
     private float onPlayerRawMeleeDamageModify(float original, @Local(argsOnly = true) Entity target, @Local(argsOnly = true, ordinal = 0) boolean critical, @Local(argsOnly = true, ordinal = 1) boolean suspended_in_liquid) {
         if ((Object) this instanceof EntityPlayer player) {
             original = Handlers.Combat.onPlayerRawMeleeDamageModify(player, target, critical, suspended_in_liquid, original);
+            System.out.println(original+" "+original
+                    + ((LeatherGlove) SBItems.leather_glove).getDamageAdditional(original, player)
+                    + ((AncientGauntlet) SBItems.ancient_gauntlet).getDamageAdditional(original, player));
             return original
                     + ((LeatherGlove) SBItems.leather_glove).getDamageAdditional(original, player)
                     + ((AncientGauntlet) SBItems.ancient_gauntlet).getDamageAdditional(original, player)
@@ -53,22 +56,17 @@ public abstract class EntityPlayerMixin {
     // DamageScale
     @Inject(method = "attackEntityFrom(Lnet/minecraft/Damage;)Lnet/minecraft/EntityDamageResult;", at = @At("HEAD"))
     private void injectDamageScale(Damage damage, CallbackInfoReturnable<EntityDamageResult> cir) {
-        if (
-                        damage != null &&
-                        damage.getAmount() > 0.0F
-        ) {
+        if (damage != null && damage.getAmount() > 0.0F) {
             if ((Object) this instanceof EntityPlayer player) {
                 float scale = 1.0F;
-                float scaleModifier = 0.0F;
                 if (damage.getSource() == DamageSource.onFire || damage.getSource() == DamageSource.inFire || damage.getSource() == DamageSource.lava) {
-                    scaleModifier += ((FlowerBoots) SBItems.flower_boots).getFireDamageAdditionalPercent(player, scale);
+                    scale += ((FlowerBoots) SBItems.flower_boots).getFireDamageAdditionalPercent(player);
                 }
                 if (damage.getSource() == DamageSource.fall) {
-                    scaleModifier += ((ClimbingPick) SBItems.climbing_pick).getFallDamageAdditionalPercent(player, scale);
-                    scaleModifier += ((FeatherBoots) SBItems.feather_boots).getFallDamageAdditionalPercent(player, scale);
+                    scale += ((ClimbingPick) SBItems.climbing_pick).getFallDamageAdditionalPercent(player);
+                    scale += ((FeatherBoots) SBItems.feather_boots).getFallDamageAdditionalPercent(player);
                 }
-                scale += scaleModifier;
-                if (scale != 1.0F && scale >= 0) {
+                if (scale >= 0 && scale != 1.0F) {
                     damage.scaleAmount(scale);
                 }
             }
@@ -78,9 +76,10 @@ public abstract class EntityPlayerMixin {
     @ModifyReturnValue(method = "getAIMoveSpeed()F", at = @At("RETURN"))
     private float injectMovementSpeed(float original) {
         if ((Object) this instanceof EntityPlayer player) {
-            return Math.max(0, original
-                    + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedAdditional(player, original)
-//                    + ((Flippers) SBItems.flippers).getLandMovementAdditional(player, original)
+            return Math.max(0, original * Math.max(0, 1
+                            + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedAdditionalPercent(player)
+//                            + ((Flippers) SBItems.flippers).getMovementSpeedAdditionalPercent(player)
+                    )
             );
         }
         return original;

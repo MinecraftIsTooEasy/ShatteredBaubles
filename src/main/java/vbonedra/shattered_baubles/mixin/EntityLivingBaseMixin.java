@@ -40,9 +40,11 @@ public abstract class EntityLivingBaseMixin extends Entity {
     // Golden Egg no food effects
     @Inject(method = "addPotionEffect", at = @At("HEAD"), cancellable = true)
     private void onAddPotionEffect(PotionEffect effect, CallbackInfo ci) {
-        if (PlayerEatingTracker.isEatingFood) {
-            if (BaubleSlotHelper.hasCharmOfType((EntityPlayer) (Object) this, SBItems.golden_egg)) {
-                ci.cancel();
+        if ((Object) this instanceof EntityPlayer player) {
+            if (PlayerEatingTracker.isEatingFood) {
+                if (BaubleSlotHelper.hasCharmOfType(player, SBItems.golden_egg)) {
+                    ci.cancel();
+                }
             }
         }
     }
@@ -50,41 +52,40 @@ public abstract class EntityLivingBaseMixin extends Entity {
     // Flower Boots and Climbing Pick wall climbing
     @Inject(method = "moveEntityWithHeading(FF)V", at = @At("TAIL"))
     private void onMoveEntityWithHeadingTail(float par1, float par2, CallbackInfo ci) {
-        if (!((Object) this instanceof EntityPlayer)) return;
+        if ((Object) this instanceof EntityPlayer player) {
+            if (player.capabilities.isFlying) return;
+            // TODO: maybe replace getCollidingBoundingBoxes with different checks
+            // TODO: maybe check for player wearing baubles before blocks checks
+            int playerX = MathHelper.floor_double(player.posX);
+            int playerZ = MathHelper.floor_double(player.posZ);
+            AxisAlignedBB checkAABB = player.boundingBox.expand(0.05D, 0.0D, 0.05D);
+            List boundingBoxes = player.worldObj.getCollidingBoundingBoxes(player, checkAABB);
 
-        EntityPlayer player = (EntityPlayer) (Object) this;
-        if (player.capabilities.isFlying) return;
-        // TODO: maybe replace getCollidingBoundingBoxes with different checks
-        // TODO: maybe check for player wearing baubles before blocks checks
-        int playerX = MathHelper.floor_double(player.posX);
-        int playerZ = MathHelper.floor_double(player.posZ);
-        AxisAlignedBB checkAABB = player.boundingBox.expand(0.05D, 0.0D, 0.05D);
-        List boundingBoxes = player.worldObj.getCollidingBoundingBoxes(player, checkAABB);
+            if (boundingBoxes != null && !boundingBoxes.isEmpty()) {
+                int minX = MathHelper.floor_double(checkAABB.minX);
+                int maxX = MathHelper.floor_double(checkAABB.maxX);
+                int minY = MathHelper.floor_double(checkAABB.minY);
+                int maxY = MathHelper.floor_double(checkAABB.maxY);
+                int minZ = MathHelper.floor_double(checkAABB.minZ);
+                int maxZ = MathHelper.floor_double(checkAABB.maxZ);
 
-        if (boundingBoxes != null && !boundingBoxes.isEmpty()) {
-            int minX = MathHelper.floor_double(checkAABB.minX);
-            int maxX = MathHelper.floor_double(checkAABB.maxX);
-            int minY = MathHelper.floor_double(checkAABB.minY);
-            int maxY = MathHelper.floor_double(checkAABB.maxY);
-            int minZ = MathHelper.floor_double(checkAABB.minZ);
-            int maxZ = MathHelper.floor_double(checkAABB.maxZ);
-
-            searchBlock:
-            for (int x = minX; x <= maxX; ++x) {
-                for (int y = minY; y <= maxY; ++y) {
-                    for (int z = minZ; z <= maxZ; ++z) {
-                        if (x == playerX || z == playerZ) {
-                            Block block = player.worldObj.getBlock(x, y, z);
-                            if (block != null) {
-                                Material material = block.blockMaterial;
-                                if (((ClimbingPick) SBItems.climbing_pick).climbWall(player, material) || ((FlowerBoots) SBItems.flower_boots).climbWall(player, material)) {
-                                    playRandomizedSoundAtPlayer(
-                                            player,
-                                            block.stepSound.getBreakSound(),
-                                            0.75, 0.1,
-                                            0.75, 0.1
-                                    );
-                                    break searchBlock;
+                searchBlock:
+                for (int x = minX; x <= maxX; ++x) {
+                    for (int y = minY; y <= maxY; ++y) {
+                        for (int z = minZ; z <= maxZ; ++z) {
+                            if (x == playerX || z == playerZ) {
+                                Block block = player.worldObj.getBlock(x, y, z);
+                                if (block != null) {
+                                    Material material = block.blockMaterial;
+                                    if (((ClimbingPick) SBItems.climbing_pick).climbWall(player, material) || ((FlowerBoots) SBItems.flower_boots).climbWall(player, material)) {
+                                        playRandomizedSoundAtPlayer(
+                                                player,
+                                                block.stepSound.getBreakSound(),
+                                                0.75, 0.1,
+                                                0.75, 0.1
+                                        );
+                                        break searchBlock;
+                                    }
                                 }
                             }
                         }
@@ -106,7 +107,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
         if ((Object) this instanceof EntityPlayer player) {
             if (BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube)) {
                 return maxRangeSq
-                        * ((FeatherBoots) SBItems.feather_boots).getDetectRangeAdditionalPercent(player)
+                        * ((FeatherBoots) SBItems.feather_boots).getDetectRangeMultiplier(player)
                         ;
             }
         }

@@ -17,8 +17,8 @@ public class FlowerBoots extends SBItem {
     public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(flower_boots_MOVEMENT_SPEED_ADDITIONAL_PERCENT.getDoubleValue()*100),
-                Math.round(flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100)
+                Math.round(flower_boots_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue()*100),
+                Math.round(flower_boots_FIRE_DAMAGE_MULTIPLIER.getDoubleValue()*100)
         );
     }
 
@@ -46,10 +46,10 @@ public class FlowerBoots extends SBItem {
             Material.cactus,
             Material.tree_leaves
     );
-    public float getFireDamageAdditionalPercent(EntityPlayer player, float damage) {
-        return damage * (float) (BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots) ? (flower_boots_FIRE_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()) : 0);
+    public float getFireDamageAdditionalPercent(EntityPlayer player) {
+        return (float) (BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots) ? (flower_boots_FIRE_DAMAGE_MULTIPLIER.getDoubleValue()) - 1 : 0);
     }
-    public float getMovementSpeedAdditional(EntityPlayer player, float speed) {
+    public float getMovementSpeedAdditionalPercent(EntityPlayer player) {
         if (!BaubleSlotHelper.hasFeetOfType(player, SBItems.flower_boots)) return 0.0F;
 
         Material material = player.worldObj.getBlockMaterial(
@@ -57,7 +57,7 @@ public class FlowerBoots extends SBItem {
                 (int) (player.getFootPosY() - 0.5),
                 (int) (player.posZ)
         );
-        if (material != null && plantMaterials.contains(material)) return speed * (float) flower_boots_MOVEMENT_SPEED_ADDITIONAL_PERCENT.getDoubleValue();
+        if (material != null && plantMaterials.contains(material)) return (float) flower_boots_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue() - 1;
 
         return 0.0F;
     }
@@ -70,7 +70,7 @@ public class FlowerBoots extends SBItem {
                 if (player.rotationPitch < -45.0F) {
                     player.motionY = Math.max(player.motionY,climbingSpeed);
                 } else if (player.rotationPitch > 45.0F) {
-                    player.motionY = Math.min(player.motionY,-climbingSpeed);
+                    player.motionY = Math.max(player.motionY,-climbingSpeed);
                 } else if (player.isSneaking()) {
                     player.motionY = 0;
                 }

@@ -15,16 +15,16 @@ public abstract class EnchantmentHelperMixin {
     // Looting
     @ModifyReturnValue(method = "getLootingModifier", at = @At("RETURN"))
     private static int getLootingModifier(int original, @Local(argsOnly = true) EntityLivingBase par0EntityLivingBase) {
-        if (par0EntityLivingBase instanceof EntityPlayer) return original
-                +  ((HunterHat) SBItems.hunter_hat).getLootingModifierAdditional((EntityPlayer) (Object) par0EntityLivingBase)
+        if (par0EntityLivingBase instanceof EntityPlayer player) return original
+                +  ((HunterHat) SBItems.hunter_hat).getLootingModifierAdditional(player)
                 ;
         return original;
     }
     // Butchering
     @ModifyReturnValue(method = "getButcheringModifier", at = @At("RETURN"))
     private static int getButcheringModifier(int original, @Local(argsOnly = true) EntityLivingBase par0EntityLivingBase) {
-        if (par0EntityLivingBase instanceof EntityPlayer) return original
-                +  ((HunterHat) SBItems.hunter_hat).getButcheringModifierAdditional((EntityPlayer) (Object) par0EntityLivingBase)
+        if (par0EntityLivingBase instanceof EntityPlayer player) return original
+                +  ((HunterHat) SBItems.hunter_hat).getButcheringModifierAdditional(player)
                 ;
         return original;
     }

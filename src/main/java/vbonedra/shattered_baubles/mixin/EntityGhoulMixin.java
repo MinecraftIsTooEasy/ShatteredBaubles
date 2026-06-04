@@ -10,7 +10,7 @@ import vbonedra.shattered_baubles.SBConfig;
 
 @Mixin(EntityGhoul.class)
 public class EntityGhoulMixin extends EntityMob {
-    @Unique private static final float BOTTLE_OF_GHOUL_BLOOD_DROP_CHANCE = (float) SBConfig.bottle_of_ghoul_blood_PROBABILITY_Ghoul.getDoubleValue();
+    @Unique private static final float bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop = (float) SBConfig.bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop.getDoubleValue();
 
     public EntityGhoulMixin(World par1World) {
         super(par1World);
@@ -21,7 +21,7 @@ public class EntityGhoulMixin extends EntityMob {
                 recently_hit_by_player
                 && !this.has_taken_massive_fall_damage
                 && this.rand.nextInt(this.getBaseChanceOfRareDrop()) <
-                        (int) (EntityGhoulMixin.BOTTLE_OF_GHOUL_BLOOD_DROP_CHANCE * this.getBaseChanceOfRareDrop()) + damage_source.getLootingModifier() * 2
+                        (int) (EntityGhoulMixin.bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop * this.getBaseChanceOfRareDrop()) + damage_source.getLootingModifier() * 2
         ) {
             this.dropItem(SBItems.bottle_of_ghoul_blood, 1);
         }

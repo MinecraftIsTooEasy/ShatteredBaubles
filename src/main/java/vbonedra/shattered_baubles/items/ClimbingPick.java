@@ -18,7 +18,7 @@ public class ClimbingPick extends SBItem {
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round(climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue()*100)
+                Math.round(climbing_pick_FALL_DAMAGE_MULTIPLIER.getDoubleValue()*100)
         );
     }
 
@@ -39,9 +39,8 @@ public class ClimbingPick extends SBItem {
     }
 
 
-
-    public float getFallDamageAdditionalPercent(EntityPlayer player, float damage) {
-        return damage * (float) (BaubleSlotHelper.hasBeltOfType(player, SBItems.climbing_pick) ? climbing_pick_FALL_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue() : 0);
+    public float getFallDamageAdditionalPercent(EntityPlayer player) {
+        return (float) (BaubleSlotHelper.hasBeltOfType(player, SBItems.climbing_pick) ? climbing_pick_FALL_DAMAGE_MULTIPLIER.getDoubleValue() - 1 : 0);
     }
     private static final Set<Material> climbableMaterials = Set.of(
             Material.lapis_lazuli,
@@ -69,14 +68,15 @@ public class ClimbingPick extends SBItem {
                     if (player.rotationPitch < -45.0F) {
                         player.motionY = Math.max(player.motionY,climbingSpeed);
                     } else if (player.rotationPitch > 45.0F) {
-                        player.motionY = Math.min(player.motionY,-climbingSpeed);
+                        player.motionY = Math.max(player.motionY,-climbingSpeed);
                     } else {
                         player.motionY = 0;
                     }
                     return player.ticksExisted % 10 == 0 && (player.motionY != 0 || player.moveForward != 0 || player.moveStrafing != 0);
                 } else {
-                    player.fallDistance *= 0.9F;
-                    player.motionY *= 0.9;
+                    System.out.println(player.motionY+" "+player.fallDistance);
+                    player.fallDistance = (float) Math.abs(player.motionY * 4.0); ;
+                    player.motionY *= 0.8;
                     return true;
                 }
             }

@@ -36,10 +36,10 @@ public class Flippers extends SBItem {
         SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 0.75);
     }
     // TODO: finish item
-    public float getLandMovementAdditional(EntityPlayer player, float speed) {
-        return (float) (speed * bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
-    }
-    public float getWaterMovementAdditional(EntityPlayer player, float speed) {
-        return (float) (speed * bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
-    }
+//    public float getMovementSpeedAdditionalPercent(EntityPlayer player) {
+//        return (float) (flippers_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
+//    }
+//    public float getSwimmingSpeedAdditionalPercent(EntityPlayer player) {
+//        return (float) (flippers_SWIMMING_SPEED_MULRIPLIER.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
+//    }
 }

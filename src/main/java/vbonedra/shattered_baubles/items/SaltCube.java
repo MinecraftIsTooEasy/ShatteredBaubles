@@ -41,11 +41,10 @@ public class SaltCube extends SBItem {
 
 
     public float getMetabolismMultiplier(EntityPlayer player) {
-        return (float) (salt_cube_METABOLISM_MULTIPLIER.getDoubleValue()
-                * (BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube) ? 1 : 0));
+        return (float) ((BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube)) ? salt_cube_METABOLISM_MULTIPLIER.getDoubleValue() : 1);
     }
-    public float getRegenerationAdditional(float baseIncrement, EntityPlayer player) {
-        return baseIncrement * getMetabolismMultiplier(player);
+    public float getRegenerationAdditionalPercent(EntityPlayer player) {
+        return getMetabolismMultiplier(player) - 1;
     }
 
 }

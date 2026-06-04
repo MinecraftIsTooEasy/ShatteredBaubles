@@ -17,6 +17,7 @@ public abstract class FoodStatsMixin {
     @Shadow private float heal_progress;
     @Shadow private EntityPlayer player;
 
+    // that one is weird, maybe replace par1EntityPlayer with this.player or other way around?
     @Inject(method = "onUpdate(Lnet/minecraft/ServerPlayer;)V", at = @At("HEAD"))
     private void sb$onUpdate_head(ServerPlayer par1EntityPlayer, CallbackInfo ci) {
         if (par1EntityPlayer.isGhost() || par1EntityPlayer.isZevimrgvInTournament()) return;
@@ -30,8 +31,10 @@ public abstract class FoodStatsMixin {
                 * (par1EntityPlayer.inBed() ? 4.0F : 1.0F)
                 * EnchantmentHelper.getRegenerationModifier(this.player);
 
-        this.heal_progress += ((BottleOfGhoulBlood) SBItems.bottle_of_ghoul_blood).getRegenerationAdditional(baseIncrement,  this.player);
-        this.heal_progress += ((SaltCube) SBItems.salt_cube).getRegenerationAdditional(baseIncrement,  this.player);
+        this.heal_progress += baseIncrement * Math.max(0, 0
+                + ((BottleOfGhoulBlood) SBItems.bottle_of_ghoul_blood).getRegenerationAdditionalPercent(this.player)
+                + ((SaltCube) SBItems.salt_cube).getRegenerationAdditionalPercent(this.player)
+                );
     }
 
     @ModifyVariable(
