@@ -295,6 +295,19 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonOverworld",     probabilityChest("Diving Helmet: DungeonOverworld",                 4/155.0));
             put("DungeonUnderworld",    probabilityChest("Diving Helmet: DungeonUnderworld",                2/73.0));
         }});
+        put("copper_flippers", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Copper Flippers: DesertPyramid",                  0/67.0));
+            put("JunglePyramid",        probabilityChest("Copper Flippers: JunglePyramid",                  0/62.0));
+            put("Fortress",             probabilityChest("Copper Flippers: Fortress",                       0/66.0));
+            put("Mineshaft",            probabilityChest("Copper Flippers: Mineshaft",                      4/168.0));
+            put("StrongholdCorridor",   probabilityChest("Copper Flippers: StrongholdCorridor",             2/189.0));
+            put("StrongholdCrossing",   probabilityChest("Copper Flippers: StrongholdCrossing",             0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Copper Flippers: StrongholdLibrary",              0/42.0));
+            put("SwampHut",             probabilityChest("Copper Flippers: SwampHut",                       1/98.0));
+            put("BlackSmith",           probabilityChest("Copper Flippers: BlackSmith",                     6/302.0));
+            put("DungeonOverworld",     probabilityChest("Copper Flippers: DungeonOverworld",               4/155.0));
+            put("DungeonUnderworld",    probabilityChest("Copper Flippers: DungeonUnderworld",              2/73.0));
+        }});
     }};
     public static List<ConfigDouble> getAllChestLoot() {
         return PROBABILITY_ChestName.values().stream()
