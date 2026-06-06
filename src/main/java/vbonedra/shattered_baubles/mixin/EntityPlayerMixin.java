@@ -6,16 +6,54 @@ import com.llamalad7.mixinextras.sugar.Local;
 import moddedmite.rustedironcore.api.event.Handlers;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.items.*;
+import vbonedra.shattered_baubles.util.IPlayerNBT;
 
 
 @Mixin(EntityPlayer.class)
-public abstract class EntityPlayerMixin {
+public abstract class EntityPlayerMixin implements IPlayerNBT {
+    // NBT: Ring of Pride mainly
+    @Unique
+    private int ringOfPrideSharedExperience = 0;
+
+    @Override
+    public int shatteredBaubles$getRingOfPrideSharedExperience() {
+        return this.ringOfPrideSharedExperience;
+    }
+
+    @Override
+    public void shatteredBaubles$setRingOfPrideSharedExperience(int value) {
+        this.ringOfPrideSharedExperience = value;
+    }
+
+    @Override
+    public void shatteredBaubles$addRingOfPrideSharedExperience(int value) {
+        this.ringOfPrideSharedExperience += value;
+    }
+
+    @Inject(method = "writeEntityToNBT", at = @At("RETURN"))
+    private void writeRingOfPrideSharedExperience(NBTTagCompound nbt, CallbackInfo ci) {
+        if (nbt != null) {
+            nbt.setInteger("RingOfPrideSharedExperience", this.ringOfPrideSharedExperience);
+        }
+    }
+
+    @Inject(method = "readEntityFromNBT", at = @At("RETURN"))
+    private void readRingOfPrideSharedExperience(NBTTagCompound nbt, CallbackInfo ci) {
+        if (nbt != null && nbt.hasKey("RingOfPrideSharedExperience")) {
+            this.ringOfPrideSharedExperience = nbt.getInteger("RingOfPrideSharedExperience");
+        }
+        else {
+            this.ringOfPrideSharedExperience = 0;
+        }
+    }
     // MeleeDamage
     @ModifyReturnValue(method = "calcRawMeleeDamageVs(Lnet/minecraft/Entity;ZZ)F", at = @At(value = "RETURN"))
     private float onPlayerRawMeleeDamageModify(float original, @Local(argsOnly = true) Entity target, @Local(argsOnly = true, ordinal = 0) boolean critical, @Local(argsOnly = true, ordinal = 1) boolean suspended_in_liquid) {
@@ -79,7 +117,7 @@ public abstract class EntityPlayerMixin {
         if ((Object) this instanceof EntityPlayer player) {
             return Math.max(0, original * Math.max(0, 1
                             + ((FlowerBoots) SBItems.flower_boots).getMovementSpeedAdditionalPercent(player)
-//                            + ((Flippers) SBItems.flippers).getMovementSpeedAdditionalPercent(player)
+                            + ((CopperFlippers) SBItems.copper_flippers).getMovementSpeedAdditionalPercent(player)
                     )
             );
         }

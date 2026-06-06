@@ -135,18 +135,18 @@ public abstract class SBItem extends Item implements IBauble {
         if (extended_info) {
             String text = I18n.getString("item." + this.texture + ".description");
             String[] words = text.split(" ");
-            String line = "";
+            StringBuilder line = new StringBuilder();
             int min_line_length = 48;
             for (String word : words) {
-                line += word+" ";
+                line.append(word).append(" ");
                 if (line.length() > min_line_length){
-                    if (line.endsWith(" ")) line = line.substring(0, line.length() - 1);
-                    info.add(line);
-                    line = "";
+                    if (line.toString().endsWith(" ")) line = new StringBuilder(line.substring(0, line.length() - 1));
+                    info.add(line.toString());
+                    line = new StringBuilder();
                 }
             }
-            if (line.endsWith(" ")) line = line.substring(0, line.length() - 1);
-            if (line != "") info.add(line);
+            if (line.toString().endsWith(" ")) line = new StringBuilder(line.substring(0, line.length() - 1));
+            if (!line.toString().isEmpty()) info.add(line.toString());
         }
     }
 

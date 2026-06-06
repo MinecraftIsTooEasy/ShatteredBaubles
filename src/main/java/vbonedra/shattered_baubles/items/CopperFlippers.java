@@ -14,9 +14,15 @@ import vbonedra.shattered_baubles.util.SBSoundMaster;
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_IRON;
 import static vbonedra.shattered_baubles.SBConfig.*;
 
-public class Flippers extends SBItem {
-    public Flippers(int id) {
-        super(id, Material.leather, "flippers", BaubleType.FEET);
+public class CopperFlippers extends SBItem {
+    public CopperFlippers(int id) {
+        super(id, Material.leather, "copper_flippers", BaubleType.FEET);
+    }
+    public String formatDescriptionWithConfigValues(String text) {
+        return text.formatted(
+                Math.round((flippers_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue()-1)*100),
+                Math.round((flippers_SWIMMING_SPEED_MULRIPLIER.getDoubleValue()-1)*100)
+        );
     }
 
 
@@ -30,11 +36,12 @@ public class Flippers extends SBItem {
         if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
         SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_IRON, 0.5, 0.75);
     }
+
     // TODO: finish item
-//    public float getMovementSpeedAdditionalPercent(EntityPlayer player) {
-//        return (float) (flippers_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
-//    }
-//    public float getSwimmingSpeedAdditionalPercent(EntityPlayer player) {
-//        return (float) (flippers_SWIMMING_SPEED_MULRIPLIER.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.flippers) ? 1 : 0));
-//    }
+    public float getMovementSpeedAdditionalPercent(EntityPlayer player) {
+        return (float) ((flippers_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue() - 1) * (BaubleSlotHelper.hasFeetOfType(player, SBItems.copper_flippers) ? 1 : 0));
+    }
+    public float getSwimmingSpeedMultiplier(EntityPlayer player) {
+        return (float) (flippers_SWIMMING_SPEED_MULRIPLIER.getDoubleValue() * (BaubleSlotHelper.hasFeetOfType(player, SBItems.copper_flippers) ? 1 : 0));
+    }
 }

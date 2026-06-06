@@ -3,10 +3,7 @@ package vbonedra.shattered_baubles.items;
 
 import baubles.api.BaubleSlotHelper;
 import baubles.api.BaubleType;
-import net.minecraft.EntityLivingBase;
-import net.minecraft.EntityPlayer;
-import net.minecraft.ItemStack;
-import net.minecraft.Material;
+import net.minecraft.*;
 import vbonedra.shattered_baubles.SBItem;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.util.SBSoundMaster;
@@ -21,8 +18,8 @@ public class HunterHat extends SBItem {
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                hunter_hat_BUTCHERING_ADDITIONAL_VALUE.getIntegerValue(),
-                hunter_hat_LOOTING_ADDITIONAL_VALUE.getIntegerValue(),
+                StatCollector.translateToLocal("enchantment.level." + hunter_hat_BUTCHERING_ADDITIONAL_VALUE.getIntegerValue()),
+                StatCollector.translateToLocal("enchantment.level." + hunter_hat_LOOTING_ADDITIONAL_VALUE.getIntegerValue()),
                 Math.round(hunter_hat_EXPERIENCE_MULTIPLIER.getDoubleValue()*100)
         );
     }

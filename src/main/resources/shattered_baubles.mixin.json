@@ -13,7 +13,6 @@
     "EntityMixin",
     "EntityPlayerMixin",
     "FoodStatsMixin",
-    "ItemFoodMixin",
-    "RingOfPride.PlayerNBT"
+    "ItemFoodMixin"
   ]
 }

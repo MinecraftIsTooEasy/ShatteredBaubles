@@ -33,7 +33,7 @@ public class SBConfig extends SimpleConfigs {
         return new ConfigDouble(description, probability,0.0,0.1);
     }
 
-    // TODO: MULTIPLIER must be damn multiplier, not 0-100%, that's ADDITIONAL_PERCENT
+    // NOTE: MULTIPLIER must be damn multiplier, not 0-100%, that's ADDITIONAL_PERCENT
     public static final ConfigDouble salt_cube_METABOLISM_MULTIPLIER = new ConfigDouble(
             "Salt Cube: Metabolism Multiplier",0.5,0.0,1.0,false,"");
 
@@ -107,15 +107,21 @@ public class SBConfig extends SimpleConfigs {
 
 
     public static final ConfigDouble flippers_MOVEMENT_SPEED_MULTIPLIER = new ConfigDouble(
-            "Copper Flippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
+            "Copper CopperFlippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
     public static final ConfigDouble flippers_SWIMMING_SPEED_MULRIPLIER = new ConfigDouble(
-            "Copper Flippers: Swimming Speed Multiplier",1.25,1.0,2.0,false,"");
+            "Copper CopperFlippers: Swimming Speed Multiplier",1.5,1.0,2.0,false,"");
 
 
     public static final ConfigDouble bracelet_of_might_HEALTH_LIMIT_MULTIPLIER = new ConfigDouble(
             "Bracelet of Might: Health Limit Multiplier",1.25,1.0,2.0,false,"");
     public static final ConfigDouble bracelet_of_might_EQUIP_DAMAGE_PERCENT = new ConfigDouble(
             "Bracelet of Might: Equip Damage Percent of Health Limit",0.5,0.0,1.0,false,"");
+
+
+    public static final ConfigInteger diving_helmet_RESPIRATION_ADDITIONAL_VALUE = new ConfigInteger(
+            "Diving Helmet: Respiration Additional Value",3,0,3,false,"");
+    public static final ConfigDouble diving_helmet_UNEQUIP_DAMAGE_PERCENT = new ConfigDouble(
+            "Diving Helmet: Unequip Damage Percent of Health Limit",0.25,0.0,1.0,false,"");
 
 
     public static final Map<String, Map<String, ConfigDouble>> PROBABILITY_ChestName = new HashMap<>()
@@ -276,6 +282,19 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonOverworld",     probabilityChest("Bracelet of Might: DungeonOverworld",             0/155.0));
             put("DungeonUnderworld",    probabilityChest("Bracelet of Might: DungeonUnderworld",            1/73.0));
         }});
+        put("diving_helmet", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Diving Helmet: DesertPyramid",                    0/67.0));
+            put("JunglePyramid",        probabilityChest("Diving Helmet: JunglePyramid",                    0/62.0));
+            put("Fortress",             probabilityChest("Diving Helmet: Fortress",                         0/66.0));
+            put("Mineshaft",            probabilityChest("Diving Helmet: Mineshaft",                        4/168.0));
+            put("StrongholdCorridor",   probabilityChest("Diving Helmet: StrongholdCorridor",               2/189.0));
+            put("StrongholdCrossing",   probabilityChest("Diving Helmet: StrongholdCrossing",               0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Diving Helmet: StrongholdLibrary",                0/42.0));
+            put("SwampHut",             probabilityChest("Diving Helmet: SwampHut",                         1/98.0));
+            put("BlackSmith",           probabilityChest("Diving Helmet: BlackSmith",                       6/302.0));
+            put("DungeonOverworld",     probabilityChest("Diving Helmet: DungeonOverworld",                 4/155.0));
+            put("DungeonUnderworld",    probabilityChest("Diving Helmet: DungeonUnderworld",                2/73.0));
+        }});
     }};
     public static List<ConfigDouble> getAllChestLoot() {
         return PROBABILITY_ChestName.values().stream()
@@ -328,6 +347,9 @@ public class SBConfig extends SimpleConfigs {
 
                 bracelet_of_might_HEALTH_LIMIT_MULTIPLIER,
                 bracelet_of_might_EQUIP_DAMAGE_PERCENT,
+
+                diving_helmet_RESPIRATION_ADDITIONAL_VALUE,
+                diving_helmet_UNEQUIP_DAMAGE_PERCENT,
 
                 salt_cube_METABOLISM_MULTIPLIER
         );

@@ -64,7 +64,15 @@ emi.lifebuoy.description=It's very tight but also extremely light. No more drown
 
 item.bracelet_of_might.name=Bracelet of Might
 item.bracelet_of_might.description=It has extremely sharp spike right behind the gem. Increases maximal health, though such effect requires pricking yourself.
-emi.bracelet_of_might.description=It has extremely sharp spike right behind the gem. Increases maximal health by %s%%, though such effect requires pricking yourself, which would drain %s%% of your maximal health.
+emi.bracelet_of_might.description=It has extremely sharp spike right behind the gem. Increases maximal health by %s%%, though such effect requires pricking yourself, which would drain %s%% of maximal health.
+
+item.diving_helmet.name=Diving Helmet
+item.diving_helmet.description=Quite heavy for helmet. Would help saving some air when underwater, though unequipping in water would hurt.
+emi.diving_helmet.description=Quite heavy for helmet. Would increase Respiration by %s, though unequipping in water would deal %s%% of maximal health damage.
+
+item.copper_flippers.name=Copper Flippers
+item.copper_flippers.description=Rough metal claps as you walk. They make you swim faster, but makes walking on land more difficult.
+emi.copper_flippers.description=Rough metal claps as you walk. They make you swim %s%% faster, but makes walking on land %s%% more difficult.
 
 
 # State: how to add chance to miss attack? how to add cooldown? how to damage when attacking faster than cooldown?

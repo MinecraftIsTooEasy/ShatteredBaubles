@@ -28,6 +28,14 @@ public abstract class EnchantmentHelperMixin {
                 ;
         return original;
     }
+    // Respiration
+    @ModifyReturnValue(method = "getRespiration", at = @At("RETURN"))
+    private static int getRespiration(int original, @Local(argsOnly = true) EntityLivingBase par0EntityLivingBase) {
+        if (par0EntityLivingBase instanceof EntityPlayer player) return original
+                +  ((DivingHelmet) SBItems.diving_helmet).getRespirationModifierAdditional(player)
+                ;
+        return original;
+    }
 }
 /*
 getKnockbackModifier        Knockback

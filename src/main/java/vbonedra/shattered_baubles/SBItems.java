@@ -1,5 +1,6 @@
 package vbonedra.shattered_baubles;
 
+import net.minecraft.Block;
 import net.minecraft.FurnaceRecipes;
 import net.minecraft.ItemStack;
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
@@ -28,9 +29,10 @@ public class SBItems {
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
     public static final Item bracelet_of_might = new BraceletOfMight(IdUtil.getNextItemID());
+    public static final Item diving_helmet = new DivingHelmet(IdUtil.getNextItemID());
+    public static final Item copper_flippers = new CopperFlippers(IdUtil.getNextItemID());
 
 
-//    public static final Item flippers = new Flippers(IdUtil.getNextItemID());
     // IDEA: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
 
     // IDEA: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
@@ -38,8 +40,6 @@ public class SBItems {
     // IDEA: rowel - increases mount speed by % (too niche to ge nerf, though maybe decrease jump height of mount with cap at 1 block)
     // IDEA: tattered manuscript - increases hand enchantments by 1 level but takes xp on tool use (attack, mine, etc.)
     // IDEA: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
-    // IDEA:NEXT bracelet of might - increases health by % with cap
-    // IDEA:NEXT swimming mask - slows down oxygen usage but increases drowning damage
     // IDEA: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
 
 
@@ -72,20 +72,37 @@ public class SBItems {
                 'N', Item.coinAncientMetal,
                 'G', SBItems.leather_glove
         );
-        event.registerShapedRecipe(new ItemStack(climbing_pick), true, ""+
-                "HII",
-                "SL ",
-                "N L",
-                'I', Item.ingotMithril,
-                'L', Item.leash,
-                'N', Item.coinMithril,
-                'H', Item.hoeMithril,
-                'S', Item.stick
+        event.registerShapedRecipe(new ItemStack(diving_helmet), true, ""+
+                "IHI",
+                "IGI",
+                "INI",
+                'I', Item.chainCopper,
+                'H', Item.helmetCopper,
+                'G', Item.shardGlass,
+                'N', Item.coinGold
+        );
+        event.registerShapedRecipe(new ItemStack(copper_flippers), true, ""+
+                "N N",
+                "IBI",
+                'B', Item.bootsCopper,
+                'I', Block.fenceCopper,
+                'N', Item.coinGold
+        );
+        event.registerShapedRecipe(new ItemStack(hunter_hat), true, ""+
+                "SHF",
+                "LNL",
+                'H', Item.helmetLeather,
+                'S', Item.sinew,
+                'F', Item.feather,
+                'L', Item.leather,
+                'N', Item.coinGold
         );
         // furnace (how to change smelting time? iTF doubles log smelting time,for sure it is possible)
         FurnaceRecipes.smelting().addSmelting(SBItems.ancient_gauntlet.itemID, new ItemStack(Item.ancientMetalNugget,12));
         FurnaceRecipes.smelting().addSmelting(SBItems.ring_of_pride.itemID, new ItemStack(Item.goldNugget,12));
         FurnaceRecipes.smelting().addSmelting(SBItems.bracelet_of_might.itemID, new ItemStack(Item.goldNugget,18));
+        FurnaceRecipes.smelting().addSmelting(SBItems.diving_helmet.itemID, new ItemStack(Item.copperNugget,23));
+        FurnaceRecipes.smelting().addSmelting(SBItems.diving_helmet.itemID, new ItemStack(Item.copperNugget,18));
         FurnaceRecipes.smelting().addSmelting(SBItems.golden_egg.itemID, new ItemStack(Item.goldNugget,8));
         FurnaceRecipes.smelting().addSmelting(SBItems.climbing_pick.itemID, new ItemStack(Item.mithrilNugget,12));
 
