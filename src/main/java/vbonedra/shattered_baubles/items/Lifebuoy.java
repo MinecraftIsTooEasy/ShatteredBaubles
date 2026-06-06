@@ -9,12 +9,7 @@ import vbonedra.shattered_baubles.SBItem;
 
 public class Lifebuoy extends SBItem {
     public Lifebuoy(int id) {
-        super(id, Material.leather, "lifebuoy");
-    }
-
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.BELT;
+        super(id, Material.leather, "lifebuoy", BaubleType.BELT);
     }
 
 

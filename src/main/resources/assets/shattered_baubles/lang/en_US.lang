@@ -62,11 +62,16 @@ item.lifebuoy.name=Lifebuoy
 item.lifebuoy.description=It's very tight but also extremely light. No more drowning!
 emi.lifebuoy.description=It's very tight but also extremely light. No more drowning!
 
+item.bracelet_of_might.name=Bracelet of Might
+item.bracelet_of_might.description=It has extremely sharp spike right behind the gem. Increases maximal health, though such effect requires pricking yourself.
+emi.bracelet_of_might.description=It has extremely sharp spike right behind the gem. Increases maximal health by %s%%, though such effect requires pricking yourself, which would drain %s%% of your maximal health.
+
+
 # State: how to add chance to miss attack? how to add cooldown? how to damage when attacking faster than cooldown?
 item.rusted_shackles.name=Rusted Shackles
 item.rusted_shackles.description=Good for subduing violent criminals. Rusted iron increases damage by 50%, but a third of attacks miss. They dig into your wrists with sudden movements.
 emi.rusted_shackles.description=Good for subduing violent criminals. Its weight increases damage, but its harder to land attack. Rusted Iron digs into your wrists when you attack to fast.
-# State: how to detect entity-attacks-entity with check for taker?
+# State: how to detect entity-attacks-entity with check for damage taker?
 item.dried_tentacle.name=Dried Tentacle
 item.dried_tentacle.description=Tangled and dry. Upon contact with water, comes to life and begins to protect host. Slows attacker.
 emi.dried_tentacle.description=Tangled and dry. Upon contact with water, comes to life and begins to protect host. Slows attacker.

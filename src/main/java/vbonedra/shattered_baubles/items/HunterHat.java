@@ -17,7 +17,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class HunterHat extends SBItem {
     public HunterHat(int id) {
-        super(id, Material.leather, "hunter_hat");
+        super(id, Material.leather, "hunter_hat", BaubleType.HEAD);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
@@ -27,10 +27,6 @@ public class HunterHat extends SBItem {
         );
     }
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.HEAD;
-    }
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {

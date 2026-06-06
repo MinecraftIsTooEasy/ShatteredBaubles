@@ -39,9 +39,9 @@ public class SBConfig extends SimpleConfigs {
 
 
     public static final ConfigDouble bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT = new ConfigDouble(
-            "Bottle of Ghoul Blood: Health Additional Percent",-0.25,-1.0,0.0,false,"");
+            "Bottle of Ghoul Blood: Health Limit Additional Percent",-0.25,-1.0,0.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP = new ConfigDouble(
-            "Bottle of Ghoul Blood: Health Additional Cap",-100.0,-100.0,0.0,false,"");
+            "Bottle of Ghoul Blood: Health Limit Additional Cap",-100.0,-100.0,0.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_REGENERATION_MULTIPLIER = new ConfigDouble(
             "Bottle of Ghoul Blood: Regeneration Multiplier",2.0,1.0,2.0,false,"");
     public static final ConfigDouble bottle_of_ghoul_blood_PROBABILITY_GhoulDeathDrop = new ConfigDouble(
@@ -110,6 +110,12 @@ public class SBConfig extends SimpleConfigs {
             "Copper Flippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
     public static final ConfigDouble flippers_SWIMMING_SPEED_MULRIPLIER = new ConfigDouble(
             "Copper Flippers: Swimming Speed Multiplier",1.25,1.0,2.0,false,"");
+
+
+    public static final ConfigDouble bracelet_of_might_HEALTH_LIMIT_MULTIPLIER = new ConfigDouble(
+            "Bracelet of Might: Health Limit Multiplier",1.25,1.0,2.0,false,"");
+    public static final ConfigDouble bracelet_of_might_EQUIP_DAMAGE_PERCENT = new ConfigDouble(
+            "Bracelet of Might: Equip Damage Percent of Health Limit",0.5,0.0,1.0,false,"");
 
 
     public static final Map<String, Map<String, ConfigDouble>> PROBABILITY_ChestName = new HashMap<>()
@@ -257,6 +263,19 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonOverworld",     probabilityChest("Lifebuoy: DungeonOverworld",                      2/155.0));
             put("DungeonUnderworld",    probabilityChest("Lifebuoy: DungeonUnderworld",                     1/73.0));
         }});
+        put("bracelet_of_might", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Bracelet of Might: DesertPyramid",                3/67.0));
+            put("JunglePyramid",        probabilityChest("Bracelet of Might: JunglePyramid",                3/62.0));
+            put("Fortress",             probabilityChest("Bracelet of Might: Fortress",                     1/66.0));
+            put("Mineshaft",            probabilityChest("Bracelet of Might: Mineshaft",                    1/168.0));
+            put("StrongholdCorridor",   probabilityChest("Bracelet of Might: StrongholdCorridor",           0/189.0));
+            put("StrongholdCrossing",   probabilityChest("Bracelet of Might: StrongholdCrossing",           1/61.0));
+            put("StrongholdLibrary",    probabilityChest("Bracelet of Might: StrongholdLibrary",            0/42.0));
+            put("SwampHut",             probabilityChest("Bracelet of Might: SwampHut",                     0/98.0));
+            put("BlackSmith",           probabilityChest("Bracelet of Might: BlackSmith",                   2/302.0));
+            put("DungeonOverworld",     probabilityChest("Bracelet of Might: DungeonOverworld",             0/155.0));
+            put("DungeonUnderworld",    probabilityChest("Bracelet of Might: DungeonUnderworld",            1/73.0));
+        }});
     }};
     public static List<ConfigDouble> getAllChestLoot() {
         return PROBABILITY_ChestName.values().stream()
@@ -306,6 +325,9 @@ public class SBConfig extends SimpleConfigs {
 
                 flippers_MOVEMENT_SPEED_MULTIPLIER,
                 flippers_SWIMMING_SPEED_MULRIPLIER,
+
+                bracelet_of_might_HEALTH_LIMIT_MULTIPLIER,
+                bracelet_of_might_EQUIP_DAMAGE_PERCENT,
 
                 salt_cube_METABOLISM_MULTIPLIER
         );

@@ -58,6 +58,8 @@ public class SBEmiPlugin implements EmiPlugin {
         if (text.size() > 2) {
             text.add(2, Text.literal(descriptionSourceColor + Translator.get("emi.obtain.source")));
         }
+        text.add(0, Text.literal("§r"));
+        text.add(Text.literal("§r"));
         registry.addRecipe(new EmiInfoRecipe(
             stacks,
             text,

@@ -17,7 +17,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 public class LeatherGlove extends SBItem {
 
     public LeatherGlove(int id) {
-        super(id, Material.leather, "leather_glove");
+        super(id, Material.leather, "leather_glove", BaubleType.HAND);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
@@ -28,10 +28,6 @@ public class LeatherGlove extends SBItem {
         );
     }
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.HAND;
-    }
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
@@ -43,6 +39,7 @@ public class LeatherGlove extends SBItem {
         if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
         SBSoundMaster.playRandomizedSoundAtPlayer(player, EQUIP_LEATHER, 0.5, 0.75);
     }
+
 
     public float getDamageAdditional(float original, EntityPlayer player) {
         return MathAdditional.minAbs(original * leather_glove_DAMAGE_ADDITIONAL_PERCENT.getDoubleValue(), leather_glove_DAMAGE_ADDITIONAL_CAP.getDoubleValue())

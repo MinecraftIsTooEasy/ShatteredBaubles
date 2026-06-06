@@ -14,18 +14,13 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundAtPlayer;
 
 public class FlowerBoots extends SBItem {
-    public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots");}
+    public FlowerBoots(int id) {super(id, Material.tree_leaves, "flower_boots", BaubleType.FEET);}
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round((flower_boots_MOVEMENT_SPEED_MULTIPLIER.getDoubleValue()-1)*100),
                 Math.round((flower_boots_FIRE_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100)
         );
     }
-
-    @Override public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.FEET;
-    }
-
 
 
     private static final Set<Material> plantMaterials = Set.of(

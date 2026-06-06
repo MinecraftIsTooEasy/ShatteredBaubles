@@ -49,6 +49,7 @@ public abstract class EntityPlayerMixin {
         if ((Object) this instanceof EntityPlayer player) {
             return original
                     + ((BottleOfGhoulBlood) SBItems.bottle_of_ghoul_blood).getHealthLimitAdditional(original, player)
+                    + ((BraceletOfMight) SBItems.bracelet_of_might).getHealthLimitAdditional(original, player)
                     ;
         }
         return original;

@@ -14,7 +14,7 @@ import static vbonedra.shattered_baubles.util.SBSoundMaster.playRandomizedSoundA
 
 public class ClimbingPick extends SBItem {
     public ClimbingPick(int id) {
-        super(id, Material.mithril, "climbing_pick");
+        super(id, Material.mithril, "climbing_pick", BaubleType.BELT);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
@@ -22,10 +22,6 @@ public class ClimbingPick extends SBItem {
         );
     }
 
-
-    @Override public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.BELT;
-    }
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {

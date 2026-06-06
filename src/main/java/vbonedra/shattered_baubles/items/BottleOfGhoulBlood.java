@@ -12,18 +12,13 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class BottleOfGhoulBlood extends SBItem {
     public BottleOfGhoulBlood(int id) {
-        super(id, Material.glass, "bottle_of_ghoul_blood");
+        super(id, Material.glass, "bottle_of_ghoul_blood", BaubleType.AMULET);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round((bottle_of_ghoul_blood_REGENERATION_MULTIPLIER.getDoubleValue()-1)*100),
                 Math.round(bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue()*100)
         );
-    }
-
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.AMULET;
     }
 
 
@@ -38,6 +33,7 @@ public class BottleOfGhoulBlood extends SBItem {
         if (player == null || player.worldObj == null || player.worldObj.isRemote) return;
         SBSoundMaster.playRandomizedSoundAtPlayer(player, "mob.chicken.plop", 0.5, 0.75);
     }
+
 
     public float getHealthLimitAdditional(float original, EntityPlayer player) {
         return MathAdditional.minAbs(original * bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_PERCENT.getDoubleValue(), bottle_of_ghoul_blood_HEALTH_LIMIT_ADDITIONAL_CAP.getDoubleValue())

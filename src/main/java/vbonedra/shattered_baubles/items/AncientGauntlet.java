@@ -18,7 +18,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class AncientGauntlet extends SBItem {
     public AncientGauntlet(int id) {
-        super(id, Material.ancient_metal, "ancient_gauntlet");
+        super(id, Material.ancient_metal, "ancient_gauntlet", BaubleType.HAND);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
@@ -29,10 +29,6 @@ public class AncientGauntlet extends SBItem {
         );
     }
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.HAND;
-    }
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {

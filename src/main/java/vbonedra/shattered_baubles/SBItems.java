@@ -27,12 +27,15 @@ public class SBItems {
     public static final Item hunter_hat = new HunterHat(IdUtil.getNextItemID());
     public static final Item feather_boots = new FeatherBoots(IdUtil.getNextItemID());
     public static final Item lifebuoy = new Lifebuoy(IdUtil.getNextItemID());
+    public static final Item bracelet_of_might = new BraceletOfMight(IdUtil.getNextItemID());
+
+
 //    public static final Item flippers = new Flippers(IdUtil.getNextItemID());
     // IDEA: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
 
     // IDEA: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
     // IDEA: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
-    // IDEA: rowel - increases mount speed by % (too niche to have nerf, though maybe decrease jump height of mount with cap at 1 block)
+    // IDEA: rowel - increases mount speed by % (too niche to ge nerf, though maybe decrease jump height of mount with cap at 1 block)
     // IDEA: tattered manuscript - increases hand enchantments by 1 level but takes xp on tool use (attack, mine, etc.)
     // IDEA: hand anvil - repairs equipment if player has corresponding repair item, but repaired durability is 2 times lower than standard anvil repair (so its infinite anvil but its better to use normal anvil for normal items. also maybe make every metal hand-anvil, so player can choose which metal exactly to repair. at this point maybe just add durability to item)
     // IDEA:NEXT bracelet of might - increases health by % with cap
@@ -72,15 +75,17 @@ public class SBItems {
         event.registerShapedRecipe(new ItemStack(climbing_pick), true, ""+
                 "HII",
                 "SL ",
-                "NL ",
+                "N L",
                 'I', Item.ingotMithril,
-                'L', Item.leather,
+                'L', Item.leash,
                 'N', Item.coinMithril,
                 'H', Item.hoeMithril,
                 'S', Item.stick
         );
+        // furnace (how to change smelting time? iTF doubles log smelting time,for sure it is possible)
         FurnaceRecipes.smelting().addSmelting(SBItems.ancient_gauntlet.itemID, new ItemStack(Item.ancientMetalNugget,12));
         FurnaceRecipes.smelting().addSmelting(SBItems.ring_of_pride.itemID, new ItemStack(Item.goldNugget,12));
+        FurnaceRecipes.smelting().addSmelting(SBItems.bracelet_of_might.itemID, new ItemStack(Item.goldNugget,18));
         FurnaceRecipes.smelting().addSmelting(SBItems.golden_egg.itemID, new ItemStack(Item.goldNugget,8));
         FurnaceRecipes.smelting().addSmelting(SBItems.climbing_pick.itemID, new ItemStack(Item.mithrilNugget,12));
 

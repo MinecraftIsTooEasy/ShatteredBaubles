@@ -19,14 +19,14 @@ import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
 import static vbonedra.shattered_baubles.SBConfig.PROBABILITY_ChestName;
 
 public abstract class SBItem extends Item implements IBauble {
-    public SBItem(int id, Material material, String texture) {
+    public SBItem(int id, Material material, String texture, BaubleType bauble_type) {
         super(id, material, texture);
         this.setMaxStackSize(1);
         this.setCreativeTab(BaublesCreativeTab.TAB);
         this.texture = texture;
+        this.bauble_type = bauble_type;
         allShatteredBaubles.add(this);
 
-        // 1. Безопасно используем локальную переменную 'texture', а не 'this.texture'
         Map<String, ConfigDouble> itemLootMap = PROBABILITY_ChestName.get(texture);
 
         if (itemLootMap != null) {
@@ -40,6 +40,8 @@ public abstract class SBItem extends Item implements IBauble {
         }
     }
 
+
+    public BaubleType bauble_type;
     public String texture;
     public static ArrayList<SBItem> allShatteredBaubles = new ArrayList<>();
     // TODO: maybe turn Integer[] into map so its easy to understand what those 4 numbers is?
@@ -91,7 +93,9 @@ public abstract class SBItem extends Item implements IBauble {
 
 
     @Override
-    public abstract BaubleType getBaubleType(ItemStack itemstack);
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return this.bauble_type;
+    };
 
     @Override
     public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down) {

@@ -16,18 +16,13 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class RingOfPride extends SBItem {
     public RingOfPride(int id) {
-        super(id, Material.gold, "ring_of_pride");
+        super(id, Material.gold, "ring_of_pride", BaubleType.RING);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 Math.round((ring_of_pride_EXPERIENCE_MULTIPLIER.getDoubleValue()-1)*100),
                 ring_of_pride_EXPERIENCE_PUNISHMENT_MULTIPLIER.getDoubleValue()
                 );
-    }
-
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.RING;
     }
 
 

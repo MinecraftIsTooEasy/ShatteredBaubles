@@ -9,14 +9,10 @@ import vbonedra.shattered_baubles.util.SBSoundMaster;
 
 public class GoldenEgg extends SBItem {
     public GoldenEgg(int id) {
-        super(id, Material.gold, "golden_egg");
+        super(id, Material.gold, "golden_egg", BaubleType.CHARM);
     }
-    // TODO: check iTF compatibility (thirst effect from cooked meat)
+    // NOTE: iTF's thirst bypasses Golden Egg, that's good
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.CHARM;
-    }
 
 
     @Override

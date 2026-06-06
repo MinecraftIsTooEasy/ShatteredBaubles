@@ -12,17 +12,12 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class SaltCube extends SBItem {
     public SaltCube(int id) {
-        super(id, Material.sugar, "salt_cube");
+        super(id, Material.sugar, "salt_cube", BaubleType.CHARM);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
                 salt_cube_METABOLISM_MULTIPLIER.getDoubleValue()
         );
-    }
-
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.CHARM;
     }
 
 

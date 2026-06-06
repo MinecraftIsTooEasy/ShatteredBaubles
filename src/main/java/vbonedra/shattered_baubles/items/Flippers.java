@@ -16,12 +16,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class Flippers extends SBItem {
     public Flippers(int id) {
-        super(id, Material.leather, "flippers");
-    }
-
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.FEET;
+        super(id, Material.leather, "flippers", BaubleType.FEET);
     }
 
 
