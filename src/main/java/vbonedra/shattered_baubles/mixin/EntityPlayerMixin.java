@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import moddedmite.rustedironcore.api.event.Handlers;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -123,5 +124,35 @@ public abstract class EntityPlayerMixin implements IPlayerNBT {
         }
         return original;
     }
+    // on player attack
+//    @Inject(method = "attackTargetEntityWithCurrentItem(Lnet/minecraft/Entity;)V", at = @At("HEAD"))
+//    private void onAttackTarget(Entity target, CallbackInfo ci) {
+//        if ((Object) this instanceof EntityPlayer player) {
+//            if (true) {
+//                ItemStack item = player.getHeldItemStack();
+//                if (item != null) {
+//                    item.tryDamageItem(
+//                            DamageSource.acid,
+//                            50,
+//                            player
+//                    );
+//                }
+//            }
+//        }
+//    }
+    // mob attacks player
+    @Inject(method = "attackEntityFrom(Lnet/minecraft/Damage;)Lnet/minecraft/EntityDamageResult;", at = @At("RETURN"))
+    public void onPlayerAttacked(Damage damage, CallbackInfoReturnable<EntityDamageResult> cir) {
+        EntityDamageResult result = cir.getReturnValue();
+        if (result == null) return;
 
+        EntityPlayer player = (EntityPlayer) (Object) this;
+
+        if (!player.worldObj.isRemote) {
+            Entity attackerEntity = damage.getSource().getResponsibleEntity();
+            if (attackerEntity instanceof EntityLivingBase) {
+                ((DriedTentacle) SBItems.dried_tentacle).applySlownessEffect(player, (EntityLivingBase) attackerEntity);
+            }
+        }
+    }
 }

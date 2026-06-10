@@ -28,11 +28,10 @@ public class SBEmiPlugin implements EmiPlugin {
     }
 
     private void addShatteredBaubleInfo(EmiRegistry registry, SBItem item) {
-        String name = item.texture;
         List<EmiIngredient> stacks = Collections.singletonList(EmiStack.of(new ItemStack(item)));
         List<Text> text = new ArrayList<>(Arrays.asList(
-                Text.literal(descriptionName + Translator.get("item.%s.name".formatted(name))),
-                Text.literal(item.formatDescriptionWithConfigValues(Translator.get("emi.%s.description".formatted(item.texture))))
+                Text.literal(descriptionName + Translator.get("item.%s.name".formatted(item.name))),
+                Text.literal(item.formatDescriptionWithConfigValues(Translator.get("emi.%s.description".formatted(item.name))))
         ));
         for (String chestName : new String[]{
                 "DesertPyramid",
@@ -63,7 +62,7 @@ public class SBEmiPlugin implements EmiPlugin {
         registry.addRecipe(new EmiInfoRecipe(
             stacks,
             text,
-                new ResourceLocation(ShatteredBaubles.MOD_ID, "info/%s".formatted(name))
+                new ResourceLocation(ShatteredBaubles.MOD_ID, "info/%s".formatted(item.name))
         ));
     }
 

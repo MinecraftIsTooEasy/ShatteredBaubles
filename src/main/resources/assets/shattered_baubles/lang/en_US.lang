@@ -56,7 +56,7 @@ emi.hunter_hat.description=Great for hunting. While hunting increases Butchering
 
 item.feather_boots.name=Feather Boots
 item.feather_boots.description=Despite the name, there are as many feathers as fingers on hand. You feel lighter in those, but smell like grilled meat.
-emi.feather_boots.description=Despite the name, there are as many feathers as fingers on hand. You feel %s%% lighter in those, but smell like grilled meat, which attracts monsters %s%% better.
+emi.feather_boots.description=Despite the name, there are as many feathers as fingers on hand. You feel %s%% lighter in those, but smell like grilled meat, which attracts monsters through walls.
 
 item.lifebuoy.name=Lifebuoy
 item.lifebuoy.description=It's very tight but also extremely light. No more drowning!
@@ -74,16 +74,20 @@ item.copper_flippers.name=Copper Flippers
 item.copper_flippers.description=Rough metal claps as you walk. They make you swim faster, but makes walking on land more difficult.
 emi.copper_flippers.description=Rough metal claps as you walk. They make you swim %s%% faster, but makes walking on land %s%% more difficult.
 
+item.dried_tentacle.name=Dried Tentacle
+item.dried_tentacle.description=Too dry to eat. Upon contact with water, comes to life and begins to protect it's host. Slows attacker.
+emi.dried_tentacle.description=Too dry to eat. Upon contact with water, comes to life and begins to protect it's host. Applies Slowness %s for %s seconds.
+
+item.invisibility_cloak.name=Invisibility Cloak
+item.invisibility_cloak.description=It's soft, almost transparent. Such cloak will make you blurry, sometimes even enough to sneak in shadows.
+emi.invisibility_cloak.description=It's soft, almost transparent. Such cloak would make you %s%% visible or %s%% visible when crouching in darkness.
+
 
 # State: how to add chance to miss attack? how to add cooldown? how to damage when attacking faster than cooldown?
 item.rusted_shackles.name=Rusted Shackles
 item.rusted_shackles.description=Good for subduing violent criminals. Rusted iron increases damage by 50%, but a third of attacks miss. They dig into your wrists with sudden movements.
 emi.rusted_shackles.description=Good for subduing violent criminals. Its weight increases damage, but its harder to land attack. Rusted Iron digs into your wrists when you attack to fast.
-# State: how to detect entity-attacks-entity with check for damage taker?
-item.dried_tentacle.name=Dried Tentacle
-item.dried_tentacle.description=Tangled and dry. Upon contact with water, comes to life and begins to protect host. Slows attacker.
-emi.dried_tentacle.description=Tangled and dry. Upon contact with water, comes to life and begins to protect host. Slows attacker.
-# State: how to prevent health change and store damage data to player? (maybe add Bleeding effect that would act like poison?)
+# State: how to prevent health change and store damage data to player? (maybe add Bleeding effect that would act like fast poison?)
 item.crown_of_thorns.name=Crown of Thorns
 item.crown_of_thorns.description=Thorns reach for bones, tearing through metal and skin. They prolong life, taking away the right to a painless death.
 emi.crown_of_thorns.description=Thorns reach for bones, tearing through metal and skin. They prolong life, taking away the right to a painless death.

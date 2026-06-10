@@ -31,9 +31,16 @@ public class SBItems {
     public static final Item bracelet_of_might = new BraceletOfMight(IdUtil.getNextItemID());
     public static final Item diving_helmet = new DivingHelmet(IdUtil.getNextItemID());
     public static final Item copper_flippers = new CopperFlippers(IdUtil.getNextItemID());
+    public static final Item dried_tentacle = new DriedTentacle(IdUtil.getNextItemID());
+    public static final Item invisibility_cloak = new InvisibilityCloak(IdUtil.getNextItemID());
 
+    // IDEA: teddy_bear - idk, sounds funny, so why not? adds something sleep related, maybe x2 healing speed or sleeping delay
+    // IDEA: bauble that removes any visual debuffs but adds annoying overlay aka see not good but not worst
+    // IDEA: gluttony bauble - damage to player (health loss after armor) is split/moved to hunger. it drains all hunger and leaves player defenceless with limited abilities. also maybe adds delay to eating
+    // IDEA: wither effect bauble - applies wither to target ???
+    // IDEA: glass_heart - bad totem of undying. saves from deadly damage with reversing under-0 damage to attacker. after such damage gives 40 ticks of invincibility
 
-    // IDEA: bauble, that makes it impossible to swim up in average situation. maybe make that part of heavy_corset? (in addition to no-sprinting and no-sneaking)
+    // IDEA: crown_of_thorns - damage dealt to player is spread into portions same way viscosity enchant from SPD works
 
     // IDEA: spiritual quiver - adds chance to save arrow, but bow loses more durability when it happens
     // IDEA: archer hat - increases bow draw speed but ??? prevents full draw attack OR lowers damage OR increases lose chance
@@ -43,12 +50,12 @@ public class SBItems {
     // IDEA: worm king - feasts on players inventory, x2 efficiency of normal worms (its bad because it might eat players food not only manure-transformable things, though how to solve afk for manure issue?)
 
 
-    private static void registerItem(ItemRegistryEvent registry, String name, Item item) {
-        registry.register(ShatteredBaubles.MOD_NAME, ShatteredBaubles.RESOURCE_ID + name, name, item);
+    private static void registerItem(ItemRegistryEvent registry, String name, String texture, Item item) {
+        registry.register(ShatteredBaubles.MOD_NAME, ShatteredBaubles.RESOURCE_ID + texture, name, item);
     }
 
     public static void registerItems(ItemRegistryEvent event) {
-        for (SBItem item : SBItem.allShatteredBaubles) { registerItem(event, item.texture, item); }
+        for (SBItem item : SBItem.allShatteredBaubles) { registerItem(event, item.name, item.texture, item); }
     }
 
     public static void registerRecipes(RecipeRegistryEvent event) {
@@ -97,9 +104,9 @@ public class SBItems {
                 'L', Item.leather,
                 'N', Item.coinGold
         );
-        // furnace (how to change smelting time? iTF doubles log smelting time,for sure it is possible)
+        // furnace (how to change smelting time? iTF doubles log smelting time, for sure it is possible)
         FurnaceRecipes.smelting().addSmelting(SBItems.ancient_gauntlet.itemID, new ItemStack(Item.ancientMetalNugget,12));
-        FurnaceRecipes.smelting().addSmelting(SBItems.ring_of_pride.itemID, new ItemStack(Item.goldNugget,12));
+        FurnaceRecipes.smelting().addSmelting(SBItems.ring_of_pride.itemID, new ItemStack(Item.mithrilNugget,12));
         FurnaceRecipes.smelting().addSmelting(SBItems.bracelet_of_might.itemID, new ItemStack(Item.goldNugget,18));
         FurnaceRecipes.smelting().addSmelting(SBItems.diving_helmet.itemID, new ItemStack(Item.copperNugget,23));
         FurnaceRecipes.smelting().addSmelting(SBItems.diving_helmet.itemID, new ItemStack(Item.copperNugget,18));

@@ -15,7 +15,7 @@ import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
 
 public class DivingHelmet extends SBItem {
     public DivingHelmet(int id) {
-        super(id, Material.leather, "diving_helmet", BaubleType.HEAD);
+        super(id, Material.copper, "diving_helmet", BaubleType.HEAD);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(

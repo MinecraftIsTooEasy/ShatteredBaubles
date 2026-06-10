@@ -4,12 +4,17 @@ import baubles.api.BaubleSlotHelper;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.items.*;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
+
     // Swimming
     @ModifyReturnValue(method = "handleWaterMovement()Z", at = @At("RETURN"))
     private boolean modifyWaterMovement(boolean inWater) {
@@ -53,5 +58,18 @@ public abstract class EntityMixin {
 
         }
         return inWater;
+    }
+    // trigger: player attacks mob only
+    @Inject(method = "onMeleeAttacked(Lnet/minecraft/EntityLivingBase;Lnet/minecraft/EntityDamageResult;)V", at = @At("HEAD"))
+    public void onMeleeAttacked(EntityLivingBase attacker, EntityDamageResult result, CallbackInfo ci) {
+//        System.out.println("TRIGGERED___________________________");
+//        if (attacker != null && this.isEntityPlayer()) {
+//
+//            EntityPlayer player = (EntityPlayer) (Object) this;
+//
+//            if (!player.worldObj.isRemote) {
+//                attacker.addPotionEffect(new PotionEffect(2, 100, 0, false));
+//            }
+//        }
     }
 }

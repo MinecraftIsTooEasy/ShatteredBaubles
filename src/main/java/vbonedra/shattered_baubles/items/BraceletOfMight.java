@@ -16,7 +16,7 @@ import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_LEATHER;
 
 public class BraceletOfMight extends SBItem {
     public BraceletOfMight(int id) {
-        super(id, Material.gold, "bracelet_of_might", BaubleType.BRACELET);
+        super(id, Material.gold, "bracelet_of_might", BaubleType.BRACELET, "bracelet_gem/gold/redstone_dust");
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(

@@ -15,16 +15,12 @@ public class FeatherBoots extends SBItem {
     public FeatherBoots(int id) {super(id, Material.meat, "feather_boots", BaubleType.FEET);}
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(
-                Math.round((feather_boots_FALL_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100),
-                Math.round((feather_boots_DETECT_RANGE_MULRIPLIER.getDoubleValue()-1)*100)
+                Math.round((feather_boots_FALL_DAMAGE_MULTIPLIER.getDoubleValue()-1)*100)
         );
     }
 
 
     public float getFallDamageAdditionalPercent(EntityPlayer player) {
         return (float) (BaubleSlotHelper.hasFeetOfType(player, SBItems.feather_boots) ? (feather_boots_FALL_DAMAGE_MULTIPLIER.getDoubleValue()) - 1 : 0);
-    }
-    public double getDetectRangeMultiplier(EntityPlayer player) {
-        return (BaubleSlotHelper.hasFeetOfType(player, SBItems.feather_boots) ? Math.pow((feather_boots_DETECT_RANGE_MULRIPLIER.getDoubleValue()),2) : 0);
     }
 }

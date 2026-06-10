@@ -16,7 +16,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class CopperFlippers extends SBItem {
     public CopperFlippers(int id) {
-        super(id, Material.leather, "copper_flippers", BaubleType.FEET);
+        super(id, Material.copper, "copper_flippers", BaubleType.FEET);
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(

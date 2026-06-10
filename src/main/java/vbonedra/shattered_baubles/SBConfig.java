@@ -102,14 +102,6 @@ public class SBConfig extends SimpleConfigs {
 
     public static final ConfigDouble feather_boots_FALL_DAMAGE_MULTIPLIER = new ConfigDouble(
             "Feather Boots: Fall Damage Multiplier",0.5,0.0,1.0,false,"");
-    public static final ConfigDouble feather_boots_DETECT_RANGE_MULRIPLIER = new ConfigDouble(
-            "Feather Boots: Detect Range Multiplier",1.5,1.0,2.0,false,"");
-
-
-    public static final ConfigDouble flippers_MOVEMENT_SPEED_MULTIPLIER = new ConfigDouble(
-            "Copper CopperFlippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
-    public static final ConfigDouble flippers_SWIMMING_SPEED_MULRIPLIER = new ConfigDouble(
-            "Copper CopperFlippers: Swimming Speed Multiplier",1.5,1.0,2.0,false,"");
 
 
     public static final ConfigDouble bracelet_of_might_HEALTH_LIMIT_MULTIPLIER = new ConfigDouble(
@@ -122,6 +114,25 @@ public class SBConfig extends SimpleConfigs {
             "Diving Helmet: Respiration Additional Value",3,0,3,false,"");
     public static final ConfigDouble diving_helmet_UNEQUIP_DAMAGE_PERCENT = new ConfigDouble(
             "Diving Helmet: Unequip Damage Percent of Health Limit",0.25,0.0,1.0,false,"");
+
+
+    public static final ConfigDouble flippers_MOVEMENT_SPEED_MULTIPLIER = new ConfigDouble(
+            "Copper CopperFlippers: Movement Speed Multiplier",0.8,0.0,1.0,false,"");
+    public static final ConfigDouble flippers_SWIMMING_SPEED_MULRIPLIER = new ConfigDouble(
+            "Copper CopperFlippers: Swimming Speed Multiplier",1.5,1.0,2.0,false,"");
+
+
+    public static final ConfigInteger dried_tentacle_SLOWNESS_LEVEL_VALUE = new ConfigInteger(
+            "Dried Tentacle: Slowness Effect Level Value",3,1,10,false,"");
+    public static final ConfigInteger dried_tentacle_EFFECT_DURATION_VALUE = new ConfigInteger(
+            "Dried Tentacle: Effect Duration Value in Ticks",100,0,600,false,"");
+
+
+    public static final ConfigDouble invisibility_cloak_DETECT_RANGE_MULRIPLIER = new ConfigDouble(
+            "Invisibility Cloak: Detect Range Multiplier",0.5,0.0,1.0,false,"");
+    public static final ConfigDouble invisibility_cloak_DETECT_RANGE_SHADOW_MULRIPLIER = new ConfigDouble(
+            "Invisibility Cloak: Detect Range Shadow Multiplier",0.1,0.0,1.0,false,"");
+
 
 
     public static final Map<String, Map<String, ConfigDouble>> PROBABILITY_ChestName = new HashMap<>()
@@ -166,8 +177,8 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonUnderworld",    probabilityChest("Leather Glove: DungeonUnderworld",                1/73.0));
         }});
         put("ring_of_pride", new HashMap<>() {{
-            put("DesertPyramid",        probabilityChest("Ring of Pride: DesertPyramid",                    3/67.0));
-            put("JunglePyramid",        probabilityChest("Ring of Pride: JunglePyramid",                    3/62.0));
+            put("DesertPyramid",        probabilityChest("Ring of Pride: DesertPyramid",                    1/67.0));
+            put("JunglePyramid",        probabilityChest("Ring of Pride: JunglePyramid",                    2/62.0));
             put("Fortress",             probabilityChest("Ring of Pride: Fortress",                         0/66.0));
             put("Mineshaft",            probabilityChest("Ring of Pride: Mineshaft",                        1/168.0));
             put("StrongholdCorridor",   probabilityChest("Ring of Pride: StrongholdCorridor",               0/189.0));
@@ -175,7 +186,7 @@ public class SBConfig extends SimpleConfigs {
             put("StrongholdLibrary",    probabilityChest("Ring of Pride: StrongholdLibrary",                1/42.0));
             put("SwampHut",             probabilityChest("Ring of Pride: SwampHut",                         0/98.0));
             put("BlackSmith",           probabilityChest("Ring of Pride: BlackSmith",                       1/302.0));
-            put("DungeonOverworld",     probabilityChest("Ring of Pride: DungeonOverworld",                 0/155.0));
+            put("DungeonOverworld",     probabilityChest("Ring of Pride: DungeonOverworld",                 1/155.0));
             put("DungeonUnderworld",    probabilityChest("Ring of Pride: DungeonUnderworld",                1/73.0));
         }});
         put("salt_cube", new HashMap<>() {{
@@ -308,6 +319,32 @@ public class SBConfig extends SimpleConfigs {
             put("DungeonOverworld",     probabilityChest("Copper Flippers: DungeonOverworld",               4/155.0));
             put("DungeonUnderworld",    probabilityChest("Copper Flippers: DungeonUnderworld",              2/73.0));
         }});
+        put("dried_tentacle", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Dried Tentacle: DesertPyramid",                   0/67.0));
+            put("JunglePyramid",        probabilityChest("Dried Tentacle: JunglePyramid",                   0/62.0));
+            put("Fortress",             probabilityChest("Dried Tentacle: Fortress",                        0/66.0));
+            put("Mineshaft",            probabilityChest("Dried Tentacle: Mineshaft",                       1/168.0));
+            put("StrongholdCorridor",   probabilityChest("Dried Tentacle: StrongholdCorridor",              0/189.0));
+            put("StrongholdCrossing",   probabilityChest("Dried Tentacle: StrongholdCrossing",              1/61.0));
+            put("StrongholdLibrary",    probabilityChest("Dried Tentacle: StrongholdLibrary",               0/42.0));
+            put("SwampHut",             probabilityChest("Dried Tentacle: SwampHut",                        3/98.0));
+            put("BlackSmith",           probabilityChest("Dried Tentacle: BlackSmith",                      3/302.0));
+            put("DungeonOverworld",     probabilityChest("Dried Tentacle: DungeonOverworld",                1/155.0));
+            put("DungeonUnderworld",    probabilityChest("Dried Tentacle: DungeonUnderworld",               1/73.0));
+        }});
+        put("invisibility_cloak", new HashMap<>() {{
+            put("DesertPyramid",        probabilityChest("Invisibility Cloak: DesertPyramid",               0/67.0));
+            put("JunglePyramid",        probabilityChest("Invisibility Cloak: JunglePyramid",               0/62.0));
+            put("Fortress",             probabilityChest("Invisibility Cloak: Fortress",                    2/66.0));
+            put("Mineshaft",            probabilityChest("Invisibility Cloak: Mineshaft",                   1/168.0));
+            put("StrongholdCorridor",   probabilityChest("Invisibility Cloak: StrongholdCorridor",          1/189.0));
+            put("StrongholdCrossing",   probabilityChest("Invisibility Cloak: StrongholdCrossing",          0/61.0));
+            put("StrongholdLibrary",    probabilityChest("Invisibility Cloak: StrongholdLibrary",           0/42.0));
+            put("SwampHut",             probabilityChest("Invisibility Cloak: SwampHut",                    0/98.0));
+            put("BlackSmith",           probabilityChest("Invisibility Cloak: BlackSmith",                  1/302.0));
+            put("DungeonOverworld",     probabilityChest("Invisibility Cloak: DungeonOverworld",            0/155.0));
+            put("DungeonUnderworld",    probabilityChest("Invisibility Cloak: DungeonUnderworld",           1/73.0));
+        }});
     }};
     public static List<ConfigDouble> getAllChestLoot() {
         return PROBABILITY_ChestName.values().stream()
@@ -353,16 +390,21 @@ public class SBConfig extends SimpleConfigs {
                 hunter_hat_BUTCHERING_ADDITIONAL_VALUE,
 
                 feather_boots_FALL_DAMAGE_MULTIPLIER,
-                feather_boots_DETECT_RANGE_MULRIPLIER,
-
-                flippers_MOVEMENT_SPEED_MULTIPLIER,
-                flippers_SWIMMING_SPEED_MULRIPLIER,
 
                 bracelet_of_might_HEALTH_LIMIT_MULTIPLIER,
                 bracelet_of_might_EQUIP_DAMAGE_PERCENT,
 
                 diving_helmet_RESPIRATION_ADDITIONAL_VALUE,
                 diving_helmet_UNEQUIP_DAMAGE_PERCENT,
+
+                flippers_MOVEMENT_SPEED_MULTIPLIER,
+                flippers_SWIMMING_SPEED_MULRIPLIER,
+
+                dried_tentacle_SLOWNESS_LEVEL_VALUE,
+                dried_tentacle_EFFECT_DURATION_VALUE,
+
+                invisibility_cloak_DETECT_RANGE_MULRIPLIER,
+                invisibility_cloak_DETECT_RANGE_SHADOW_MULRIPLIER,
 
                 salt_cube_METABOLISM_MULTIPLIER
         );

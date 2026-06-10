@@ -16,7 +16,7 @@ import static vbonedra.shattered_baubles.SBConfig.*;
 
 public class RingOfPride extends SBItem {
     public RingOfPride(int id) {
-        super(id, Material.gold, "ring_of_pride", BaubleType.RING);
+        super(id, Material.mithril, "ring_of_pride", BaubleType.RING, "ring_gem/mithril/emerald");
     }
     public String formatDescriptionWithConfigValues(String text) {
         return text.formatted(

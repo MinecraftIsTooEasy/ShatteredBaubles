@@ -15,19 +15,25 @@ import java.util.List;
 import java.util.Map;
 
 import static vbonedra.shattered_baubles.ShatteredBaubles.LOGGER;
+import static vbonedra.shattered_baubles.ShatteredBaubles.RESOURCE_ID;
 import static vbonedra.shattered_baubles.event.SBSounds.EQUIP_GENERIC;
 import static vbonedra.shattered_baubles.SBConfig.PROBABILITY_ChestName;
 
-public abstract class SBItem extends Item implements IBauble {
-    public SBItem(int id, Material material, String texture, BaubleType bauble_type) {
+public class SBItem extends Item implements IBauble {
+    public SBItem(int id, Material material, String name, BaubleType bauble_type) {
+        this(id, material, name, bauble_type, name);
+    }
+    public SBItem(int id, Material material, String name, BaubleType bauble_type, String texture) {
         super(id, material, texture);
+        this.name = name;
+        this.texture = texture;
+
         this.setMaxStackSize(1);
         this.setCreativeTab(BaublesCreativeTab.TAB);
-        this.texture = texture;
         this.bauble_type = bauble_type;
         allShatteredBaubles.add(this);
 
-        Map<String, ConfigDouble> itemLootMap = PROBABILITY_ChestName.get(texture);
+        Map<String, ConfigDouble> itemLootMap = PROBABILITY_ChestName.get(name);
 
         if (itemLootMap != null) {
             itemLootMap.forEach((structureName, configDouble) -> {
@@ -36,12 +42,13 @@ public abstract class SBItem extends Item implements IBauble {
                 }
             });
         } else {
-            LOGGER.warn("Item \"{}\" doesn't have chest probability in PROBABILITY_ChestName.", texture);
+            LOGGER.warn("Item \"{}\" doesn't have chest probability in PROBABILITY_ChestName.", name);
         }
     }
 
 
     public BaubleType bauble_type;
+    public String name;
     public String texture;
     public static ArrayList<SBItem> allShatteredBaubles = new ArrayList<>();
     // TODO: maybe turn Integer[] into map so its easy to understand what those 4 numbers is?
@@ -86,11 +93,10 @@ public abstract class SBItem extends Item implements IBauble {
         }
     }
 
-    // formatTextWithConfigValues must be modified if inserting values in emi.{this.texture}.description via "%s"
+    // formatTextWithConfigValues must be modified if inserting values in emi.{this.name}.description via "%s"
     public String formatDescriptionWithConfigValues(String text) {
         return text;
     }
-
 
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
@@ -133,7 +139,7 @@ public abstract class SBItem extends Item implements IBauble {
     @Override
     public void addInformationBeforeEnchantments(ItemStack item_stack, EntityPlayer player, List info, boolean extended_info, Slot slot) {
         if (extended_info) {
-            String text = I18n.getString("item." + this.texture + ".description");
+            String text = I18n.getString("item." + this.name + ".description");
             String[] words = text.split(" ");
             StringBuilder line = new StringBuilder();
             int min_line_length = 48;

@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vbonedra.shattered_baubles.SBItems;
 import vbonedra.shattered_baubles.items.*;
 import vbonedra.shattered_baubles.util.PlayerEatingTracker;
@@ -94,24 +95,4 @@ public abstract class EntityLivingBaseMixin extends Entity {
             }
         }
     }
-
-    // how far mobs can see player
-    @ModifyVariable(
-            method = "canEntityBeSeenFrom(DDDDZ)Z",
-            at = @At("HEAD"),
-            ordinal = 3,
-            argsOnly = true,
-            remap = false
-    )
-    private double increaseMaxRangeSq(double maxRangeSq) {
-        if ((Object) this instanceof EntityPlayer player) {
-            if (BaubleSlotHelper.hasCharmOfType(player, SBItems.salt_cube)) {
-                return maxRangeSq
-                        * ((FeatherBoots) SBItems.feather_boots).getDetectRangeMultiplier(player)
-                        ;
-            }
-        }
-        return maxRangeSq;
-    }
-
 }

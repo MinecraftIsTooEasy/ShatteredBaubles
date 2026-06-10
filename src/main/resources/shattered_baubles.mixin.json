@@ -9,10 +9,14 @@
     "EnchantmentHelperMixin",
     "EntityChickenMixin",
     "EntityGhoulMixin",
+    "EntityLivingAccessor",
     "EntityLivingBaseMixin",
     "EntityMixin",
     "EntityPlayerMixin",
+    "RenderPlayerMixin",
+    "EntitySensesMixin",
     "FoodStatsMixin",
-    "ItemFoodMixin"
+    "ItemFoodMixin",
+    "RendererLivingEntityMixin"
   ]
 }
