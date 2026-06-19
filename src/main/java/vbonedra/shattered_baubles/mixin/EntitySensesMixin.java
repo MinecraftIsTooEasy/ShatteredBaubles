@@ -18,7 +18,7 @@ public abstract class EntitySensesMixin {
 
     @Shadow EntityLiving entityObj;
 
-    // how far mobs can see
+    // how far mobs can see (through walls)
     @Inject(
             method = "canSee(Lnet/minecraft/Entity;Z)Z",
             at = @At("RETURN"),
